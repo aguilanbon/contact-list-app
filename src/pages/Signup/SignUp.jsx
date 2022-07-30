@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import SignUpContext from '../../helpers/SignUpContext'
 import FirstStep from './FirstStep'
 import SecondStep from './SecondStep'
+import { Link } from "react-router-dom";
 
 function SignUp() {
 
@@ -26,6 +27,10 @@ function SignUp() {
                     </div>
                     {signUpStep === 1 && <FirstStep />}
                     {signUpStep === 2 && <SecondStep />}
+                    <div className='w-full border-b border-slate-300 mt-4'></div>
+                    <div className='w-full flex items-center justify-center'>
+                        <Link to='/' className='mt-4 text-blue-500 hover:border-b hover:border-blue-500 cursor-pointer'>Go back to Log in page</Link>
+                    </div>
                 </div>
             </div>
         </div>
