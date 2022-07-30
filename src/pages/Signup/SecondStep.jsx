@@ -27,7 +27,7 @@ function SecondStep() {
                 </ul>
             </div>
             <div className='w-full flex justify-end py-2 mt-2'>
-                <input type="button" value="Submit" className='font-semibold bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md cursor-pointer outline-blue-400' />
+                <input type="button" value="Submit" className='font-semibold bg-green-400 hover:bg-green-500 text-white py-2 px-4 rounded-md cursor-pointer outline-blue-400' />
             </div>
         </form>
     )

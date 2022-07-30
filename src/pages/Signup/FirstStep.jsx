@@ -26,7 +26,7 @@ function FirstStep() {
                 <input type="password" name="password" id="" placeholder='Password' className='border border-slate-200 text-md p-2 rounded-md outline-blue-400' />
             </div>
             <div className='w-full flex justify-end py-2 mt-2'>
-                <input type="button" value="Next" className='font-semibold bg-blue-500 hover:bg-blue-600 text-white py-2 px-4 rounded-md cursor-pointer outline-blue-400' onClick={() => handleAction()} />
+                <input type="button" value="Next" className='font-semibold bg-green-400 hover:bg-green-500 text-white py-2 px-4 rounded-md cursor-pointer outline-blue-400' onClick={() => handleAction()} />
             </div>
         </form>
     )
