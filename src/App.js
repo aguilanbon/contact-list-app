@@ -1,9 +1,10 @@
 import './index.css'
+import Login from './pages/Login/Login';
 
 function App() {
   return (
-    <div className="">
-      <h1 className="text-red-400 text-3xl">Hello</h1>
+    <div className="w-screen min-h-screen">
+      <Login />
     </div>
   );
 }
