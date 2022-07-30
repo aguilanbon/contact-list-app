@@ -7,7 +7,7 @@ function Home() {
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
             <Sidebar />
-            <div className='w-full flex flex-col'>
+            <div className='w-full h-auto flex flex-col'>
                 <Header />
                 <Profile />
             </div>
