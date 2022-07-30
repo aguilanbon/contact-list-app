@@ -25,12 +25,17 @@ function SignUp() {
                     <div className='w-full flex items-center justify-center'>
                         <h1 className='font-semibold text-xl text-gray-600'>Sign Up</h1>
                     </div>
-                    {signUpStep === 1 && <FirstStep />}
+                    {signUpStep === 1 &&
+                        <>
+                            <FirstStep />
+                            <div className='w-full border-b border-slate-300 mt-4'></div>
+                            <div className='w-full flex items-center justify-center'>
+                                <Link to='/' className='mt-4 text-blue-500 hover:border-b hover:border-blue-500 cursor-pointer'>Go back to Log in page</Link>
+                            </div>
+                        </>
+                    }
                     {signUpStep === 2 && <SecondStep />}
-                    <div className='w-full border-b border-slate-300 mt-4'></div>
-                    <div className='w-full flex items-center justify-center'>
-                        <Link to='/' className='mt-4 text-blue-500 hover:border-b hover:border-blue-500 cursor-pointer'>Go back to Log in page</Link>
-                    </div>
+
                 </div>
             </div>
         </div>
