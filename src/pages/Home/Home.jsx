@@ -3,7 +3,7 @@ import Header from './Header'
 
 function Home() {
     return (
-        <div className='w-full min-h-screen'>
+        <div className='w-full min-h-screen flex'>
             <Header />
         </div>
     )
