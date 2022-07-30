@@ -1,5 +1,6 @@
 import React from 'react'
 import Header from './Header'
+import Profile from './Profile'
 import Sidebar from './Sidebar'
 
 function Home() {
@@ -8,6 +9,7 @@ function Home() {
             <Sidebar />
             <div className='w-full flex flex-col'>
                 <Header />
+                <Profile />
             </div>
         </div>
     )

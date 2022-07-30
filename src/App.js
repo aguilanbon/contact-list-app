@@ -8,7 +8,7 @@ import Home from './pages/Home/Home';
 function App() {
   return (
     <SignUpProvider>
-      <div className="w-screen min-h-screen">
+      <div className="w-auto min-h-screen">
 
       <Routes>
         <Route path='/' element={ <Login /> }></Route>
