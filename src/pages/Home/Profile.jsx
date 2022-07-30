@@ -3,9 +3,9 @@ import React from 'react'
 function Profile() {
     return (
         <div className='w-full h-auto flex md:p-6 p-4'>
-            <div className='w-full h-auto flex md:flex-row flex-col'>
-                <div className='md:w-1/4 w-full flex flex-col items-center'>
-                    <div className='w-full border border-slate-200 rounded-lg py-4 px-8 shadow-md'>
+            <div className='w-full h-auto flex lg:flex-row flex-col'>
+                <div className='md:w-full lg:w-1/4 w-full flex flex-col md:flex-row lg:flex-col items-center md:mb-6'>
+                    <div className='w-full h-full border border-slate-200 rounded-lg py-4 px-8 shadow-md'>
                         <div className='flex items-center justify-center'>
                             <img src="./profile.png" alt="" className='w-20 md:w-28' />
                         </div>
@@ -18,7 +18,7 @@ function Profile() {
                             </div>
                         </div>
                     </div>
-                    <div className='w-full flex flex-col mt-4 border border-slate-200 px-4 py-2 rounded-lg shadow-lg'>
+                    <div className='w-full h-full flex flex-col lg:mt-4 sm:mt-4 md:mt-0 mt-4 md:ml-4 lg:ml-0'>
                         <div className='w-full'>
                             <h2 className='font-2xl font-bold'>Additional Information</h2>
                         </div>
@@ -42,7 +42,7 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-                <div className='md:w-3/4 w-full min-h-96 lg:ml-8 md:ml-4 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col mb-8 rounded-lg'>
+                <div className='lg:w-3/4 w-full min-h-96 lg:ml-6 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col mb-8 rounded-lg'>
                     <div className='w-full flex bg-slate-200 rounded-t-lg'>
                         <div className='w-full py-2 px-4 '>
                             <h1 className='text-cyan-700'>My Contacts</h1>
