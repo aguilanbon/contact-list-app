@@ -5,7 +5,7 @@ function Profile() {
     return (
         <div className='w-full h-auto flex md:p-6 p-4'>
             <div className='w-full h-auto flex lg:flex-row flex-col'>
-                <div className='md:w-full lg:w-1/4 w-full flex flex-col md:flex-row lg:flex-col items-center md:mb-6'>
+                <div className='md:w-full h-auto lg:w-1/4 w-full flex flex-col md:flex-row lg:flex-col items-center md:mb-6'>
                     <div className='w-full h-full border border-slate-200 rounded-lg py-4 px-8 shadow-md'>
                         <div className='flex items-center justify-center'>
                             <img src="./profile.png" alt="" className='w-20 md:w-28' />
@@ -50,7 +50,7 @@ function Profile() {
                         </div>
                     </div>
                 </div>
-                <div className='lg:w-3/4 w-full max-h-96 overflow-y-scroll lg:ml-6 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col mb-8 rounded-lg'>
+                <div className='lg:w-3/4 w-full h-fit lg:ml-6 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col rounded-lg'>
                     <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-lg'>
                         <div className='w-full py-2 px-4 flex items-center'>
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-cyan-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
@@ -66,9 +66,11 @@ function Profile() {
                             </button>
                         </div>
                     </div>
-                    <ContactsCard />
-                    <ContactsCard />
-                    <ContactsCard />
+                    <div className='overflow-y-scroll max-h-96'>
+                        <ContactsCard />
+                        <ContactsCard />
+                        <ContactsCard />
+                    </div>
                 </div>
             </div>
         </div>
