@@ -16,10 +16,16 @@ function Profile() {
                                 <h1 className='text-sm md:text-md text-slate-700'>Jr. Software Engineer</h1>
                                 <h2 className='text-sm md:text-md text-slate-600 opacity-70'>aguilanbon@gmail.com</h2>
                                 <h2 className='text-sm md:text-md text-slate-600 opacity-70'>+63995-651-0890</h2>
+                                <div className='flex mt-4'>
+                                    <button className=' text-xs flex items-center text-blue-400 justify-center border border-blue-200 py-1 px-2 rounded-md hover:text-white hover:bg-blue-500 transition-all duration-300'>
+                                        Edit Profile
+                                    </button>
+                                </div>
                             </div>
+
                         </div>
                     </div>
-                    <div className='w-full h-full flex flex-col lg:mt-4 sm:mt-4 md:mt-0 mt-4 md:ml-4 lg:ml-0'>
+                    <div className='w-full h-full flex flex-col lg:mt-4 sm:mt-4 md:mt-0 mt-4 md:ml-4 lg:ml-2 ml-2'>
                         <div className='w-full'>
                             <h2 className='font-2xl font-bold'>Additional Information</h2>
                         </div>
@@ -40,6 +46,7 @@ function Profile() {
                                 <h1 className='text-xs md:text-md font-semibold text-slate-400'>Address</h1>
                                 <h2 className='text-sm md:text-md'>Camias st., Narra, Palawan</h2>
                             </div>
+
                         </div>
                     </div>
                 </div>
