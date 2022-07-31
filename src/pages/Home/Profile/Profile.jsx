@@ -19,11 +19,11 @@ function Profile() {
                 <div className='w-full h-auto flex md:p-6 p-4'>
                     <div className='w-full h-auto flex lg:flex-row flex-col'>
                         <div className='md:w-full h-auto lg:w-1/4 w-full flex flex-col md:flex-row lg:flex-col items-center md:mb-6'>
-                            <div className='w-full h-full border border-slate-200 bg-white rounded-lg py-4 px-8 shadow-md'>
-                                <div className='flex items-center justify-center'>
+                            <div className='w-full h-full border border-slate-200 bg-white rounded-lg  shadow-md pb-4'>
+                                <div className='flex items-center justify-center py-4 px-8'>
                                     <img src="./profile.png" alt="" className='w-20 md:w-28' />
                                 </div>
-                                <div className='w-full flex flex-col items-center mt-2 md:px-10'>
+                                <div className='w-full flex flex-col items-center mt-2 md:px-4 px-0'>
                                     <div className='flex flex-col items-center'>
                                         <h2 className='text-md md:text-lg text-cyan-700 font-bold'>Bon Aguilan</h2>
                                         <h1 className='text-sm md:text-md text-slate-700'>User</h1>
@@ -35,31 +35,29 @@ function Profile() {
                                             </button>
                                         </div>
                                     </div>
+                                    <div className='w-full h-full flex flex-col mt-4 px-4 md:px-0'>
+                                        <div className='w-full mb-2 border-b border-slate-200'>
+                                        </div>
+                                        <div className='flex flex-col mt-1 ml-3'>
+                                            <div className='mb-2'>
+                                                <h1 className='text-xs md:text-md font-semibold text-slate-400'>Gender</h1>
+                                                <h2 className='text-sm md:text-md'>Male</h2>
+                                            </div>
+                                            <div className='mb-2'>
+                                                <h1 className='text-xs md:text-md font-semibold text-slate-400'>Age</h1>
+                                                <h2 className='text-sm md:text-md'>26</h2>
+                                            </div>
+                                            <div className='mb-2'>
+                                                <h1 className='text-xs md:text-md font-semibold text-slate-400'>Birthday</h1>
+                                                <h2 className='text-sm md:text-md'>October 1, 1995</h2>
+                                            </div>
+                                            <div className='mb-2'>
+                                                <h1 className='text-xs md:text-md font-semibold text-slate-400'>Address</h1>
+                                                <h2 className='text-sm md:text-md'>Camias st., Narra, Palawan</h2>
+                                            </div>
 
-                                </div>
-                            </div>
-                            <div className='w-full h-full flex flex-col lg:mt-4 sm:mt-4 md:mt-0 mt-4 md:ml-4 lg:ml-2 ml-2'>
-                                <div className='w-full'>
-                                    <h2 className='font-2xl font-bold'>Additional Information</h2>
-                                </div>
-                                <div className='flex flex-col mt-1'>
-                                    <div className='mb-2'>
-                                        <h1 className='text-xs md:text-md font-semibold text-slate-400'>Gender</h1>
-                                        <h2 className='text-sm md:text-md'>Male</h2>
+                                        </div>
                                     </div>
-                                    <div className='mb-2'>
-                                        <h1 className='text-xs md:text-md font-semibold text-slate-400'>Age</h1>
-                                        <h2 className='text-sm md:text-md'>26</h2>
-                                    </div>
-                                    <div className='mb-2'>
-                                        <h1 className='text-xs md:text-md font-semibold text-slate-400'>Birthday</h1>
-                                        <h2 className='text-sm md:text-md'>October 1, 1995</h2>
-                                    </div>
-                                    <div className='mb-2'>
-                                        <h1 className='text-xs md:text-md font-semibold text-slate-400'>Address</h1>
-                                        <h2 className='text-sm md:text-md'>Camias st., Narra, Palawan</h2>
-                                    </div>
-
                                 </div>
                             </div>
                         </div>
