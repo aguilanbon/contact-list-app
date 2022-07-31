@@ -10,7 +10,6 @@ function App() {
   return (
     <SignUpProvider>
       <div className="w-auto min-h-screen">
-
       <Routes>
         <Route path='/' element={ <Login /> }></Route>
         <Route path='/signup' element={ <SignUp /> }></Route>

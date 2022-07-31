@@ -1,9 +1,10 @@
 import React from 'react'
+import Card from './Card'
 
 function Directory() {
     return (
         <div className='w-full h-auto flex p-6'>
-            <div className='w-full h-auto '>
+            <div className='w-full h-auto flex flex-col'>
                 <div className='w-full flex items-center static'>
                     <input type="text" name="search" id="" className='w-full border-b border-cyan-800 outline-none bg-inherit pl-10 py-1' />
                     <div className='fixed'>
@@ -15,7 +16,12 @@ function Directory() {
                         <button className='py-1 px-2 text-white text-xs rounded-full bg-cyan-600 hover:bg-cyan-700'>Search</button>
                     </div>
                 </div>
-
+                <div className='w-full h-96 mt-4'>
+                    <Card />
+                    <Card />
+                    <Card />
+                    <Card />
+                </div>
             </div>
         </div>
     )
