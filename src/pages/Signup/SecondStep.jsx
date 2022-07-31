@@ -2,7 +2,7 @@ import React from 'react'
 
 function SecondStep() {
     return (
-        <form action="" className='w-96 flex flex-col mt-4'>
+        <form action="" className='md:w-96 flex flex-col mt-4'>
             <div className='w-full lex flex-row py-2'>
                 <input type="text" placeholder='Address' className='w-full border border-slate-200 text-md p-2 rounded-md outline-8 outline-blue-400 mr-2' />
             </div>
