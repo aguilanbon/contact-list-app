@@ -4,10 +4,21 @@ import SignUpContext from '../../helpers/SignUpContext'
 import FirstStep from './FirstStep'
 import SecondStep from './SecondStep'
 import { Link } from "react-router-dom";
+import { useState } from 'react'
 
 function SignUp() {
 
     const { signUpStep, setSignUpStep } = useContext(SignUpContext)
+
+    const [userDetails, setUserDetails] = useState({
+        fName: '',
+        lName: '',
+        password: '',
+        email: '',
+        address: '',
+        phone: null,
+        bday: null,
+    })
 
     return (
         <div className='w-full h-screen flex flex-col mb-16'>

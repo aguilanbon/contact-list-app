@@ -27,9 +27,6 @@ function Create() {
                             <input type="email" placeholder='Email' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-0' />
                         </div>
                         <div className='w-full lex flex-row mb-1'>
-                            <input type="text" placeholder='Designation' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' />
-                        </div>
-                        <div className='w-full lex flex-row mb-1'>
                             <input type="text" placeholder='Address' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' />
                         </div>
                         <div className='w-full flex mb-1'>
@@ -38,19 +35,6 @@ function Create() {
                         <div className='w-full flex flex-col mb-1'>
                             <label htmlFor="birthday">Birthday</label>
                             <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' />
-                        </div>
-                        <div className='w-full flex flex-col mb-1'>
-                            <h2>Gender</h2>
-                            <ul className='w-full flex justify-evenly mt-1'>
-                                <li className='w-full flex items-center justify-center border border-slate-200 py-1 px-2 rounded-md mr-4'>
-                                    <input type="radio" name="gender" id="list-gender" />
-                                    <label htmlFor="list-gender" className='ml-2'>Male</label>
-                                </li>
-                                <li className='w-full flex items-center justify-center border border-slate-200 py-1 px-2 rounded-md'>
-                                    <input type="radio" name="gender" id="list-gender" />
-                                    <label htmlFor="list-gender" className='ml-2'>Female</label>
-                                </li>
-                            </ul>
                         </div>
                         <div className='w-full flex flex-col py-2'>
                             <input type="button" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md' />
