@@ -1,5 +1,6 @@
 import React from 'react'
-import { useState } from 'react'
+import { useContext } from 'react'
+import { ModalContext } from '../../../helpers/ModalContext'
 import Header from '../Header'
 import Modal from '../Modal/Modal'
 import Overlay from '../Modal/Overlay'
@@ -8,7 +9,7 @@ import ContactsCard from './ContactsCard'
 
 function Profile() {
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const { isModalOpen, setIsModalOpen } = useContext(ModalContext)
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>

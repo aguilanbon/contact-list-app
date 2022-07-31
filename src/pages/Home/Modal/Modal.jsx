@@ -3,7 +3,7 @@ import Overlay from './Overlay'
 
 function Modal() {
     return (
-        <div className='w-full min-h-screen static'>
+        <div className='w-full h-auto static'>
             <Overlay />
         </div>
     )
