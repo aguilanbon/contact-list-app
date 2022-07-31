@@ -1,4 +1,5 @@
 import React from 'react'
+import ContactsCard from './ContactsCard'
 
 function Profile() {
     return (
@@ -51,9 +52,10 @@ function Profile() {
                             <h1 className='text-cyan-700 ml-4'>My Contacts</h1>
                         </div>
                     </div>
-                    <div className='flex flex-col'>
-
-                    </div>
+                    <ContactsCard />
+                    <ContactsCard />
+                    <ContactsCard />
+                    <ContactsCard />
                 </div>
             </div>
         </div>
