@@ -14,7 +14,7 @@ function ContactsCard() {
                         <img src="./profile.png" alt="" className='w-10 h-10' />
                         <div className='flex flex-col ml-2'>
                             <p className='text-sm font-semibold'>Ella Alolor</p>
-                            <p className='text-xs'>HR Manager</p>
+                            <p className='text-xs'>Supervisor</p>
                         </div>
                     </div>
                     <div className='w-full flex md:flex-row flex-col justify-evenly'>

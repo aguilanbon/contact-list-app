@@ -19,14 +19,14 @@ function Profile() {
                 <div className='w-full h-auto flex md:p-6 p-4'>
                     <div className='w-full h-auto flex lg:flex-row flex-col'>
                         <div className='md:w-full h-auto lg:w-1/4 w-full flex flex-col md:flex-row lg:flex-col items-center md:mb-6'>
-                            <div className='w-full h-full border border-slate-200 rounded-lg py-4 px-8 shadow-md'>
+                            <div className='w-full h-full border border-slate-200 bg-white rounded-lg py-4 px-8 shadow-md'>
                                 <div className='flex items-center justify-center'>
                                     <img src="./profile.png" alt="" className='w-20 md:w-28' />
                                 </div>
                                 <div className='w-full flex flex-col items-center mt-2 md:px-10'>
                                     <div className='flex flex-col items-center'>
                                         <h2 className='text-md md:text-lg text-cyan-700 font-bold'>Bon Aguilan</h2>
-                                        <h1 className='text-sm md:text-md text-slate-700'>Jr. Software Engineer</h1>
+                                        <h1 className='text-sm md:text-md text-slate-700'>User</h1>
                                         <h2 className='text-sm md:text-md text-slate-600 opacity-70'>aguilanbon@gmail.com</h2>
                                         <h2 className='text-sm md:text-md text-slate-600 opacity-70'>+63995-651-0890</h2>
                                         <div className='flex mt-4'>

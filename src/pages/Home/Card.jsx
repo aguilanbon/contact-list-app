@@ -9,7 +9,7 @@ function Card() {
                 </div>
                 <div className='flex md: flex-col md:flex-row md:items-center'>
                     <p className='md:text-sm text-xs font-semibold lg:mr-24 md:mr-6'>Ella Alolor</p>
-                    <p className='text-xs'>HR Manager</p>
+                    <p className='text-xs'>Supervisor</p>
                 </div>
                 <div className='flex justify-between md:flex-row flex-col text-sm'>
                     <p className='lg:mr-24 md:mr-6 text-xs'>ella@gmail.com</p>
