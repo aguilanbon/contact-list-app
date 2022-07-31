@@ -53,7 +53,7 @@ function Edit() {
                             </ul>
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md' />
+                            <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md' />
                         </div>
                     </form>
                 </div>
