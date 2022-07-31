@@ -10,9 +10,9 @@ function SignUp() {
     const { signUpStep, setSignUpStep } = useContext(SignUpContext)
 
     return (
-        <div className='w-full h-screen flex flex-col'>
+        <div className='w-full h-screen flex flex-col mb-16'>
             <div className='w-full mt-28 flex justify-center'>
-                <div className='w-auto h-auto flex flex-col border border-slate-300 shadow-xl rounded-lg p-10'>
+                <div className='md:w-auto w-full h-auto flex flex-col border border-slate-300 shadow-xl rounded-lg md:p-10 sm:p-8 p-6 sm:mx-10 mx-8'>
                     {signUpStep > 1 ?
                         <div className='w-20 rounded-full flex items-center cursor-pointer text-gray-400 hover:text-black hover:bg-gray-100' onClick={() => setSignUpStep(1)}>
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">

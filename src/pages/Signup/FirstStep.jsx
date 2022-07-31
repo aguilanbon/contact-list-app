@@ -11,10 +11,10 @@ function FirstStep() {
     }
 
     return (
-        <form action="" className='flex flex-col mt-4'>
-            <div className='flex flex-row py-2'>
-                <input type="text" placeholder='First name' className='border border-slate-200 text-md p-2 rounded-md outline-8 outline-blue-400 mr-2' />
-                <input type="text" placeholder='Last name' className='border border-slate-200 text-md p-2 rounded-md outline-8 outline-blue-400' />
+        <form action="" className='w-full flex flex-col mt-4'>
+            <div className='flex flex-col md:flex-row py-2'>
+                <input type="text" placeholder='First name' className='border border-slate-200 text-md p-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' />
+                <input type="text" placeholder='Last name' className='mt-4 md:mt-0 border border-slate-200 text-md p-2 rounded-md outline-8 outline-blue-400' />
             </div>
             <div className='w-full flex flex-row py-2'>
                 <input type="email" placeholder='Email' className='w-full border border-slate-200 text-md p-2 rounded-md outline-8 outline-blue-400' />
