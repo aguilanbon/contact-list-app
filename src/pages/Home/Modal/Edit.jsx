@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import ModalContext from '../../../helpers/ModalContext'
 
-function Create() {
+function Edit() {
 
     const { setOpenModalType } = useContext(ModalContext)
 
@@ -15,7 +15,7 @@ function Create() {
             </div>
             <div className='w-full h-auto px-4 py-2 flex-flex-col'>
                 <div>
-                    <h1>Create New Contact</h1>
+                    <h1>Edit Contact</h1>
                 </div>
                 <div>
                     <form action="" className='w-full flex flex-col mt-2'>
@@ -62,4 +62,4 @@ function Create() {
     )
 }
 
-export default Create
+export default Edit

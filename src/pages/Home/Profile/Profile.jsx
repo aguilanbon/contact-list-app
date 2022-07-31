@@ -3,17 +3,16 @@ import { useContext } from 'react'
 import { ModalContext } from '../../../helpers/ModalContext'
 import Header from '../Header'
 import Modal from '../Modal/Modal'
-import Overlay from '../Modal/Overlay'
 import Sidebar from '../Sidebar'
 import ContactsCard from './ContactsCard'
 
 function Profile() {
 
-    const { isModalOpen, setIsModalOpen } = useContext(ModalContext)
+    const { openModalType, setOpenModalType } = useContext(ModalContext)
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
-            {isModalOpen && <Overlay children={<Modal />} />}
+            {openModalType && <Modal />}
             <Sidebar />
             <div className='w-full h-auto flex flex-col'>
                 <Header />
@@ -73,7 +72,7 @@ function Profile() {
                                     <h1 className='text-cyan-600 ml-4 md:text-sm text-xs w-full'>My Contacts</h1>
                                 </div>
                                 <div className='flex justify-end w-full pr-4'>
-                                    <button className='p-2 text-green-400 text-sm flex items-center hover:bg-slate-700 rounded-full' onClick={() => setIsModalOpen(true)}>
+                                    <button className='p-2 text-green-400 text-sm flex items-center hover:bg-slate-700 rounded-full' onClick={() => setOpenModalType('create')}>
                                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                                             <path strokeLinecap="round" strokeLinejoin="round" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z" />
                                         </svg>

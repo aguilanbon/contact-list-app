@@ -5,10 +5,10 @@ export const ModalContext = createContext(null)
 
 export const ModalProvider = ({children}) => {
 
-    const [isModalOpen, setIsModalOpen] = useState(false)
+    const [openModalType, setOpenModalType] = useState(null)
 
     const value = {
-        isModalOpen, setIsModalOpen
+        openModalType, setOpenModalType
     }
 
     return (
