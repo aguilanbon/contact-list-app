@@ -2,7 +2,7 @@ import React from 'react'
 
 function Card() {
     return (
-        <div className='h-14 border-b border-slate-200 bg-white rounded-sm shadow-md mb-1'>
+        <div className='h-14 border-b border-slate-200 bg-white rounded-sm shadow-md'>
             <div className='flex items-center justify-around py-2 px-4'>
                 <div className='h-full flex items-center justify-center'>
                     <img src="./profile.png" alt="" className='w-8 h-8' />
