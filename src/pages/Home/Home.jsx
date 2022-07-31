@@ -1,6 +1,6 @@
 import React from 'react'
+import Directory from './Directory'
 import Header from './Header'
-import Profile from './Profile/Profile'
 import Sidebar from './Sidebar'
 
 function Home() {
@@ -9,7 +9,7 @@ function Home() {
             <Sidebar />
             <div className='w-full h-auto flex flex-col'>
                 <Header />
-                <Profile />
+                <Directory />
             </div>
         </div>
     )

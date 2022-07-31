@@ -4,6 +4,7 @@ import './index.css'
 import Login from './pages/Login/Login';
 import SignUp from './pages/Signup/SignUp';
 import Home from './pages/Home/Home';
+import Profile from './pages/Home/Profile/Profile';
 
 function App() {
   return (
@@ -12,8 +13,9 @@ function App() {
 
       <Routes>
         <Route path='/' element={ <Login /> }></Route>
-        <Route path='signup' element={ <SignUp /> }></Route>
+        <Route path='/signup' element={ <SignUp /> }></Route>
         <Route path='/home' element={ <Home /> }></Route>
+        <Route path='/profile' element={ <Profile /> }></Route>
       </Routes>
       </div>
     </SignUpProvider>
