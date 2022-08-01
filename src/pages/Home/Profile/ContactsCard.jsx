@@ -25,12 +25,20 @@ function ContactsCard({ contacts }) {
                             <p className='text-sm font-semibold'>{contacts.fName} {contacts.lName}</p>
                         </div>
                     </div>
-                    <div className='w-full flex md:flex-row flex-col justify-evenly'>
+                    <div className='w-full flex flex-col  items-start ml-2'>
                         <div className='flex'>
-                            <p className='text-xs'>{contacts.email}</p>
+                            <p className='text-xs w-full'>{contacts.email}</p>
                         </div>
                         <div className='flex'>
-                            <p className='text-xs'>{contacts.phone}</p>
+                            <p className='text-xs w-full'>{contacts.phone}</p>
+                        </div>
+                    </div>
+                    <div className='w-full sm:flex hidden flex-col  items-start'>
+                        <div className='flex'>
+                            <p className='text-xs w-full'>{contacts.bday.slice(0, 10)}</p>
+                        </div>
+                        <div className='flex'>
+                            <p className='text-xs w-full'>{contacts.address}</p>
                         </div>
                     </div>
                     <div className='w-auto flex sm:flex-row flex-col justify-end'>
