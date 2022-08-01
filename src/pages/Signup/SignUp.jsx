@@ -3,7 +3,7 @@ import { useContext } from 'react'
 import SignUpContext from '../../helpers/SignUpContext'
 import FirstStep from './FirstStep'
 import SecondStep from './SecondStep'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react'
 
 function SignUp() {
@@ -20,6 +20,26 @@ function SignUp() {
         phone: null,
         bday: null,
     })
+
+    let navigate = useNavigate()
+
+    const handleSignUp = async () => {
+        try {
+            const response = await fetch('http://localhost:4000/api/users', {
+                method: 'post',
+                body: JSON.stringify(userDetails),
+                headers: { 'Content-Type': 'application/json' }
+            })
+            await response.json()
+            navigate('/')
+
+        } catch (error) {
+            console.log(error);
+        }
+    }
+
+    console.log(userDetails);
+
 
     return (
         <div className='w-full h-screen flex flex-col mb-16'>
@@ -46,7 +66,7 @@ function SignUp() {
                             </div>
                         </>
                     }
-                    {signUpStep === 2 && <SecondStep setUserDetails={setUserDetails} />}
+                    {signUpStep === 2 && <SecondStep setUserDetails={setUserDetails} handleSignUp={handleSignUp} />}
 
                 </div>
             </div>
