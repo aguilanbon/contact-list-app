@@ -1,6 +1,7 @@
 import React from 'react'
 import { useContext, useState } from 'react'
 import ModalContext from '../../../helpers/ModalContext'
+import axios from 'axios'
 
 function Create() {
 
@@ -14,6 +15,17 @@ function Create() {
         phone: null,
         bday: null,
     })
+
+
+    const userCreateContact = async () => {
+        const response = await fetch('http://localhost:4000/api/contacts', {
+            method: 'post',
+            body: JSON.stringify(createContact),
+            headers: { 'Content-Type': 'application/json' }
+        })
+        const data = await response.json()
+        console.log(data);
+    }
 
     const handleAction = (e) => {
         setCreateContact(prev => ({ ...prev, [e.target.name]: e.target.value }))
@@ -45,14 +57,14 @@ function Create() {
                             <input type="text" placeholder='Address' name='address' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' onChange={handleAction} />
                         </div>
                         <div className='w-full flex mb-1'>
-                            <input type="number" placeholder='Phone no.' name='phone' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' />
+                            <input type="number" placeholder='Phone no.' name='phone' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' onChange={handleAction} />
                         </div>
                         <div className='w-full flex flex-col mb-1'>
                             <label htmlFor="birthday">Birthday</label>
                             <input type="date" placeholder='Birthday' name='bday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' onChange={handleAction} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-500' />
+                            <input type="button" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-500' onClick={() => userCreateContact()} />
                         </div>
                     </form>
                 </div>
