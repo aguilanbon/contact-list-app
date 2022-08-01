@@ -1,9 +1,23 @@
-import React from 'react'
+import axios from 'axios'
+import React, { useEffect } from 'react'
+import { useState } from 'react'
 import Card from './Card'
 
 function Directory() {
+
+    const [users, setUsers] = useState(null)
+
+    useEffect(() => {
+        const getUsers = async () => {
+            const response = await axios.get('http://localhost:4000/api/users')
+            setUsers(response.data)
+        }
+
+        getUsers()
+    }, [])
+
     return (
-        <div className='w-full h-auto flex p-6'>
+        <div className='w-full h-auto flex sm:p-6 p-2'>
             <div className='w-full h-auto flex flex-col'>
                 <div className='w-full flex items-center static'>
                     <input type="text" name="search" id="" className='w-full border-b border-slate-800 outline-none bg-inherit pl-10 py-1' />
@@ -12,15 +26,14 @@ function Directory() {
                             <path strokeLinecap="round" strokeLinejoin="round" d="M8 16l2.879-2.879m0 0a3 3 0 104.243-4.242 3 3 0 00-4.243 4.242zM21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <div className='fixed right-8 flex h-full items-center justify-center'>
+                    <div className='fixed sm:right-5 right-1 flex items-center justify-center'>
                         <button className='py-1 px-4 text-white text-sm rounded-full bg-cyan-600 hover:bg-cyan-700'>Search</button>
                     </div>
                 </div>
                 <div className='w-full h-96 mt-4'>
-                    <Card />
-                    <Card />
-                    <Card />
-                    <Card />
+                    {users?.map(user => (
+                        <Card user={user} key={user._id} />
+                    ))}
                 </div>
             </div>
         </div>

@@ -1,5 +1,4 @@
 import axios from 'axios'
-import moment from 'moment'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -30,7 +29,7 @@ function Edit() {
             setCurrentBday(data.bday)
         }
         findContact()
-    }, [])
+    }, [currentContactId])
 
     return (
         <div className='md:w-1/2 lg:w-1/2 xl:w-1/4 w-full mx-6 h-fit bg-white rounded-lg relative mt-10 '>
