@@ -1,4 +1,7 @@
+import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { useContext } from 'react'
 import { ModalContext } from '../../../helpers/ModalContext'
 import Header from '../Header'
@@ -9,6 +12,21 @@ import ContactsCard from './ContactsCard'
 function Profile() {
 
     const { openModalType, setOpenModalType } = useContext(ModalContext)
+
+    const [userContacts, setUserContacts] = useState(null)
+
+    useEffect(() => {
+        const getUserContacts = async () => {
+            const response = await axios.get('http://localhost:4000/api/contacts')
+            const data = response.data
+
+            if (response.statusText === 'OK') {
+                setUserContacts(data)
+            }
+        }
+
+        getUserContacts()
+    }, [])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
@@ -74,9 +92,9 @@ function Profile() {
                                 </div>
                             </div>
                             <div className='overflow-y-scroll max-h-96'>
-                                <ContactsCard />
-                                <ContactsCard />
-                                <ContactsCard />
+                                {userContacts?.map((contacts) => (
+                                    <ContactsCard contacts={contacts} key={contacts._id} />
+                                ))}
                             </div>
                         </div>
                     </div>

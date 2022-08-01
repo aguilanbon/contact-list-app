@@ -2,7 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import ModalContext from '../../../helpers/ModalContext'
 
-function ContactsCard() {
+function ContactsCard({ contacts }) {
 
     const { setOpenModalType } = useContext(ModalContext)
 
@@ -13,16 +13,16 @@ function ContactsCard() {
                     <div className='md:w-1/3 w-full flex items-center'>
                         <img src="./profile.png" alt="" className='w-10 h-10' />
                         <div className='flex flex-col ml-2'>
-                            <p className='text-sm font-semibold'>Ella Alolor</p>
+                            <p className='text-sm font-semibold'>{contacts.fName} {contacts.lName}</p>
                             <p className='text-xs'>Supervisor</p>
                         </div>
                     </div>
                     <div className='w-full flex md:flex-row flex-col justify-evenly'>
                         <div className='flex'>
-                            <p className='text-xs'>ella@gmail.com</p>
+                            <p className='text-xs'>{contacts.email}</p>
                         </div>
                         <div className='flex'>
-                            <p className='text-xs'>+63 995-651-0890</p>
+                            <p className='text-xs'>{contacts.phone}</p>
                         </div>
                     </div>
                     <div className='w-auto flex sm:flex-row flex-col justify-end'>
