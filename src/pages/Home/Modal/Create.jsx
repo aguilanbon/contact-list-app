@@ -1,7 +1,6 @@
 import React from 'react'
 import { useContext, useState } from 'react'
 import ModalContext from '../../../helpers/ModalContext'
-import axios from 'axios'
 
 function Create() {
 
@@ -23,8 +22,8 @@ function Create() {
             body: JSON.stringify(createContact),
             headers: { 'Content-Type': 'application/json' }
         })
-        const data = await response.json()
-        console.log(data);
+        await response.json()
+        setOpenModalType(null)
     }
 
     const handleAction = (e) => {

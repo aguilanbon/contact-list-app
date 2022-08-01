@@ -26,7 +26,7 @@ function Profile() {
         }
 
         getUserContacts()
-    }, [])
+    }, [openModalType])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
