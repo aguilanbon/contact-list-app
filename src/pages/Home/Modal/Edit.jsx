@@ -1,4 +1,5 @@
 import axios from 'axios'
+import moment from 'moment'
 import React from 'react'
 import { useEffect } from 'react'
 import { useState } from 'react'
@@ -10,6 +11,7 @@ function Edit() {
     const { setOpenModalType, currentContactId } = useContext(ModalContext)
 
     const [currentContactDetails, setCurrentContactDetails] = useState(null)
+    const [currentBday, setCurrentBday] = useState(null)
 
     const handleEdit = async (id) => {
         await axios.patch(`http://localhost:4000/api/contacts/${id}`, currentContactDetails)
@@ -25,6 +27,7 @@ function Edit() {
             const response = await fetch(`http://localhost:4000/api/contacts/${currentContactId}`)
             const data = await response.json()
             setCurrentContactDetails(data)
+            setCurrentBday(data.bday)
         }
         findContact()
     }, [])
@@ -57,7 +60,7 @@ function Edit() {
                         </div>
                         <div className='w-full flex flex-col mb-1'>
                             <label htmlFor="birthday">Birthday</label>
-                            <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' />
+                            <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' name='bday' defaultValue={currentBday?.slice(0, 10)} onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
                             <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(currentContactDetails._id)} />
