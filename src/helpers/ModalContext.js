@@ -6,9 +6,11 @@ export const ModalContext = createContext(null)
 export const ModalProvider = ({children}) => {
 
     const [openModalType, setOpenModalType] = useState(null)
+    const [currentContactId, setCurrentContactId] = useState(null)
 
     const value = {
-        openModalType, setOpenModalType
+        openModalType, setOpenModalType,
+        currentContactId, setCurrentContactId
     }
 
     return (

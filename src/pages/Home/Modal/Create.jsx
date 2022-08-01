@@ -30,8 +30,6 @@ function Create() {
         setCreateContact(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
-    console.log(createContact);
-
     return (
         <div className='md:w-1/2 lg:w-1/2 xl:w-1/4 w-full mx-6 h-fit bg-white rounded-lg relative mt-10 '>
             <div className='absolute -mt-1 -right-1' onClick={() => setOpenModalType(null)}>

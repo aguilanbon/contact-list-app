@@ -1,10 +1,33 @@
+import axios from 'axios'
 import React from 'react'
+import { useEffect } from 'react'
+import { useState } from 'react'
 import { useContext } from 'react'
 import ModalContext from '../../../helpers/ModalContext'
 
 function Edit() {
 
-    const { setOpenModalType } = useContext(ModalContext)
+    const { setOpenModalType, currentContactId } = useContext(ModalContext)
+
+    const [currentContactDetails, setCurrentContactDetails] = useState(null)
+
+    const handleEdit = async (id) => {
+        await axios.patch(`http://localhost:4000/api/contacts/${id}`, currentContactDetails)
+        setOpenModalType(null)
+    }
+
+    const handleInput = (e) => {
+        setCurrentContactDetails(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    }
+
+    useEffect(() => {
+        const findContact = async () => {
+            const response = await fetch(`http://localhost:4000/api/contacts/${currentContactId}`)
+            const data = await response.json()
+            setCurrentContactDetails(data)
+        }
+        findContact()
+    }, [])
 
     return (
         <div className='md:w-1/2 lg:w-1/2 xl:w-1/4 w-full mx-6 h-fit bg-white rounded-lg relative mt-10 '>
@@ -20,24 +43,24 @@ function Edit() {
                 <div>
                     <form action="" className='w-full flex flex-col mt-2'>
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
-                            <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' />
-                            <input type="text" placeholder='Last name' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' />
+                            <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' name='fName' defaultValue={currentContactDetails?.fName} onChange={handleInput} />
+                            <input type="text" placeholder='Last name' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' name='lName' defaultValue={currentContactDetails?.lName} onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-row mb-1'>
-                            <input type="email" placeholder='Email' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-0' />
+                            <input type="email" placeholder='Email' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-0' name='email' defaultValue={currentContactDetails?.email} onChange={handleInput} />
                         </div>
                         <div className='w-full lex flex-row mb-1'>
-                            <input type="text" placeholder='Address' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' />
+                            <input type="text" placeholder='Address' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' name='address' defaultValue={currentContactDetails?.address} onChange={handleInput} />
                         </div>
                         <div className='w-full flex mb-1'>
-                            <input type="number" placeholder='Phone no.' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' />
+                            <input type="number" placeholder='Phone no.' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' name='phone' defaultValue={currentContactDetails?.phone} onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col mb-1'>
                             <label htmlFor="birthday">Birthday</label>
                             <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md' />
+                            <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(currentContactDetails._id)} />
                         </div>
                     </form>
                 </div>
