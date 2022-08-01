@@ -1,14 +1,28 @@
 import React from 'react'
 import { useState } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import axios from 'axios'
 
 function Login() {
 
     const [username, setUsername] = useState('')
-    const [userPassword, setUserPassword] = useState('')
+    const [password, setPassword] = useState('')
 
-    const handleAction = () => {
-        console.log(username, userPassword);
+    const [signedInUser, setSignedInUser] = useState(null)
+
+    let navigate = useNavigate()
+
+    const handleAction = async () => {
+        const loginDetails = { username, password }
+        try {
+            const response = await axios.post('http://localhost:4000/api/users/signin', loginDetails)
+            setSignedInUser(response.data)
+            localStorage.setItem('uId', response.data._id)
+            navigate('/home')
+        } catch (error) {
+            console.log(error.response.data.msg);
+        }
+
     }
 
     return (
@@ -23,7 +37,7 @@ function Login() {
                             <input type="text" placeholder='Username' className='border border-slate-200 text-md p-2 rounded-md outline-8 outline-blue-400' onChange={e => setUsername(e.target.value)} />
                         </div>
                         <div className='flex flex-col py-2'>
-                            <input type="password" name="password" id="" placeholder='Password' className='border border-slate-200 text-md p-2 rounded-md outline-blue-400' onChange={e => setUserPassword(e.target.value)} />
+                            <input type="password" name="password" id="" placeholder='Password' className='border border-slate-200 text-md p-2 rounded-md outline-blue-400' onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div className='w-full flex py-2 mt-2'>
                             <input type="button" value="Log in" className='w-full font-semibold bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md cursor-pointer outline-blue-400' onClick={handleAction} />
