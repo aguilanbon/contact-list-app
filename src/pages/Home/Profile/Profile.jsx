@@ -40,10 +40,6 @@ function Profile() {
                                         </div>
                                         <div className='flex flex-col mt-1 ml-3'>
                                             <div className='mb-2'>
-                                                <h1 className='text-xs md:text-md font-semibold text-slate-400'>Gender</h1>
-                                                <h2 className='text-sm md:text-md'>Male</h2>
-                                            </div>
-                                            <div className='mb-2'>
                                                 <h1 className='text-xs md:text-md font-semibold text-slate-400'>Age</h1>
                                                 <h2 className='text-sm md:text-md'>26</h2>
                                             </div>
@@ -61,7 +57,7 @@ function Profile() {
                                 </div>
                             </div>
                         </div>
-                        <div className='lg:w-3/4 w-full h-fit lg:ml-6 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col rounded-lg'>
+                        <div className='lg:w-3/4 w-full h-fit lg:ml-5 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col rounded-lg'>
                             <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-lg'>
                                 <div className='w-full py-2 px-4 flex items-center'>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-cyan-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2">
