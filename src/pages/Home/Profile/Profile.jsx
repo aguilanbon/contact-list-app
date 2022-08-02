@@ -4,6 +4,7 @@ import { useEffect } from 'react'
 import { useContext } from 'react'
 import ContactContext from '../../../helpers/ContactContext'
 import { ModalContext } from '../../../helpers/ModalContext'
+import UserContext from '../../../helpers/UserContext'
 import Header from '../Header'
 import Modal from '../Modal/Modal'
 import Sidebar from '../Sidebar'
@@ -13,6 +14,8 @@ function Profile() {
 
     const { openModalType, setOpenModalType } = useContext(ModalContext)
     const { contacts, dispatch } = useContext(ContactContext)
+
+    const { users } = useContext(UserContext)
 
     const uid = localStorage.getItem('uId')
 
@@ -41,10 +44,10 @@ function Profile() {
                                 </div>
                                 <div className='w-full flex flex-col items-center mt-2 md:px-4 px-0'>
                                     <div className='flex flex-col items-center'>
-                                        <h2 className='text-md md:text-lg text-cyan-700 font-bold'>Bon Aguilan</h2>
-                                        <h1 className='text-sm md:text-md text-slate-700'>User</h1>
-                                        <h2 className='text-sm md:text-md text-slate-600 opacity-70'>aguilanbon@gmail.com</h2>
-                                        <h2 className='text-sm md:text-md text-slate-600 opacity-70'>+63995-651-0890</h2>
+                                        <h2 className='text-md md:text-lg text-cyan-700 font-bold'>{users?.fName} {users?.lName}</h2>
+                                        <h1 className='text-sm md:text-md text-slate-700'>{users?.role}</h1>
+                                        <h2 className='text-sm md:text-md text-slate-600 opacity-70'>{users?.email}</h2>
+                                        <h2 className='text-sm md:text-md text-slate-600 opacity-70'>{users?.phone}</h2>
                                         <div className='flex mt-4'>
                                             <button className=' text-xs flex items-center text-blue-400 justify-center border border-blue-200 py-1 px-2 rounded-md hover:text-white hover:bg-blue-500 transition-all duration-300'>
                                                 Edit Profile
@@ -61,11 +64,11 @@ function Profile() {
                                             </div>
                                             <div className='mb-2'>
                                                 <h1 className='text-xs md:text-md font-semibold text-slate-400'>Birthday</h1>
-                                                <h2 className='text-sm md:text-md'>October 1, 1995</h2>
+                                                <h2 className='text-sm md:text-md'>{users?.bday.slice(0, 10)}</h2>
                                             </div>
                                             <div className='mb-2'>
                                                 <h1 className='text-xs md:text-md font-semibold text-slate-400'>Address</h1>
-                                                <h2 className='text-sm md:text-md'>Camias st., Narra, Palawan</h2>
+                                                <h2 className='text-sm md:text-md'>{users?.address}</h2>
                                             </div>
 
                                         </div>
@@ -90,8 +93,8 @@ function Profile() {
                                 </div>
                             </div>
                             <div className='overflow-y-scroll max-h-96'>
-                                {contacts?.map((contact) => (
-                                    <ContactsCard contact={contact} key={contact._id} />
+                                {contacts?.map((contact, index) => (
+                                    <ContactsCard key={index} contact={contact} />
                                 ))}
                             </div>
                         </div>

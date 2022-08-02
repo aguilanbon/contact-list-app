@@ -7,7 +7,7 @@ function Create() {
 
     const { setOpenModalType } = useContext(ModalContext)
     const { dispatch } = useContext(ContactContext)
-    const uId = localStorage.getItem('uId')
+    const userId = localStorage.getItem('uId')
 
     const [createContact, setCreateContact] = useState({
         fName: '',
@@ -16,7 +16,7 @@ function Create() {
         address: '',
         phone: null,
         bday: null,
-        uId: uId
+        uId: userId
     })
 
     const userCreateContact = async () => {

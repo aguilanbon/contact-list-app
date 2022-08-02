@@ -11,7 +11,7 @@ export const contactsReducer = (state, action) => {
             }
         case 'CREATE_CONTACT':
             return {
-                contacts: [action.payload, ...state.contacts]
+                contacts: [action.payload, {...state.contacts}]
             }
         case 'DELETE_CONTACT':
             return {
