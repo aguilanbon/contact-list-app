@@ -8,6 +8,7 @@ import Profile from './pages/Home/Profile/Profile';
 import { ModalProvider } from './helpers/ModalContext';
 import { ContactsProvider } from './helpers/ContactContext';
 import { UserProvider } from './helpers/UserContext';
+import EditProfile from './pages/Home/Profile/EditProfile';
 
 function App() {
   return (
@@ -20,7 +21,8 @@ function App() {
               <Route path='/' element={ <Login /> }></Route>
               <Route path='/signup' element={ <SignUp /> }></Route>
               <Route path='/home' element={ <Home /> }></Route>
-                <Route path='/profile' element={ <Profile /> }></Route>
+              <Route path='/profile' element={ <Profile /> }></Route>
+              <Route path='/profile/edit' element={ <EditProfile/> }></Route>
             </Routes>
           </div>
         </ContactsProvider>

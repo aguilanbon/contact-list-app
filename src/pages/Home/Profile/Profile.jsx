@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
+import { Link } from 'react-router-dom'
 import ContactContext from '../../../helpers/ContactContext'
 import { ModalContext } from '../../../helpers/ModalContext'
 import UserContext from '../../../helpers/UserContext'
@@ -9,6 +10,7 @@ import Header from '../Header'
 import Modal from '../Modal/Modal'
 import Sidebar from '../Sidebar'
 import ContactsCard from './ContactsCard'
+import EditProfile from './EditProfile'
 
 function Profile() {
 
@@ -48,9 +50,11 @@ function Profile() {
                                         <h2 className='text-sm md:text-md text-slate-600 opacity-70'>{users?.email}</h2>
                                         <h2 className='text-sm md:text-md text-slate-600 opacity-70'>{users?.phone}</h2>
                                         <div className='flex mt-4'>
-                                            <button className=' text-xs flex items-center text-blue-400 justify-center border border-blue-200 py-1 px-2 rounded-md hover:text-white hover:bg-blue-500 transition-all duration-300'>
-                                                Edit Profile
-                                            </button>
+                                            <Link to='/profile/edit' element={<EditProfile />}>
+                                                <button className=' text-xs flex items-center text-blue-400 justify-center border border-blue-200 py-1 px-2 rounded-md hover:text-white hover:bg-blue-500 transition-all duration-300'>
+                                                    Edit Profile
+                                                </button>
+                                            </Link>
                                         </div>
                                     </div>
                                     <div className='w-full h-full flex flex-col mt-4 px-4 md:px-0'>
