@@ -2,6 +2,7 @@ import React from 'react'
 import { useContext } from 'react'
 import ContactContext from '../../../helpers/ContactContext'
 import ModalContext from '../../../helpers/ModalContext'
+import axios from 'axios'
 
 function ContactsCard({ contact }) {
 
@@ -9,10 +10,8 @@ function ContactsCard({ contact }) {
     const { dispatch } = useContext(ContactContext)
 
     const handleDelete = async (id) => {
-        const response = await fetch(`http://localhost:4000/api/contacts/${id}`, { method: 'delete' })
-        const data = await response.json()
-        console.log(data);
-        dispatch({ type: 'DELETE_CONTACT', payload: data })
+        const response = await axios.delete(`http://localhost:4000/api/contacts/${id}`)
+        dispatch({ type: 'DELETE_CONTACT', payload: response.data })
     }
 
     const handleEditModal = (id) => {

@@ -25,6 +25,12 @@ function Admin() {
         navigate('/home')
     }
 
+    const handleDelete = async (id) => {
+        const response = await axios.delete(`http://localhost:4000/api/users/${id}`)
+        navigate('/home')
+        console.log(response);
+    }
+
     const handleInput = (e) => {
         setUpdatedUser(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
@@ -35,7 +41,7 @@ function Admin() {
             setCurrentUser(response.data)
         }
         getUser()
-    })
+    }, [])
 
     useEffect(() => {
         const auth = localStorage.getItem('auth')
@@ -71,6 +77,9 @@ function Admin() {
 
                         <div className='w-full flex flex-col py-2'>
                             <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(currentUser?._id)} />
+                        </div>
+                        <div className='w-full flex flex-col py-2'>
+                            <input type="button" value="Delete" className='bg-red-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-red-500' onClick={() => handleDelete(currentUser?._id)} />
                         </div>
                     </form>
                 </div>
