@@ -1,10 +1,12 @@
 import React from 'react'
 import { useContext, useState } from 'react'
+import ContactContext from '../../../helpers/ContactContext'
 import ModalContext from '../../../helpers/ModalContext'
 
 function Create() {
 
     const { setOpenModalType } = useContext(ModalContext)
+    const { dispatch } = useContext(ContactContext)
 
     const [createContact, setCreateContact] = useState({
         fName: '',
@@ -15,18 +17,19 @@ function Create() {
         bday: null,
     })
 
-
     const userCreateContact = async () => {
         const response = await fetch('http://localhost:4000/api/contacts', {
             method: 'post',
             body: JSON.stringify(createContact),
             headers: { 'Content-Type': 'application/json' }
         })
-        await response.json()
+        const data = await response.json()
+
+        dispatch({ type: 'CREATE_CONTACT', payload: data })
         setOpenModalType(null)
     }
 
-    const handleAction = (e) => {
+    const handleInput = (e) => {
         setCreateContact(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
@@ -44,21 +47,21 @@ function Create() {
                 <div>
                     <form action="" className='w-full flex flex-col mt-2'>
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
-                            <input type="text" placeholder='First name' name='fName' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' onChange={handleAction} />
-                            <input type="text" placeholder='Last name' name='lName' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' onChange={handleAction} />
+                            <input type="text" placeholder='First name' name='fName' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' onChange={handleInput} />
+                            <input type="text" placeholder='Last name' name='lName' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-row mb-1'>
-                            <input type="email" placeholder='Email' name='email' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-0' onChange={handleAction} />
+                            <input type="email" placeholder='Email' name='email' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-0' onChange={handleInput} />
                         </div>
                         <div className='w-full lex flex-row mb-1'>
-                            <input type="text" placeholder='Address' name='address' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' onChange={handleAction} />
+                            <input type="text" placeholder='Address' name='address' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' onChange={handleInput} />
                         </div>
                         <div className='w-full flex mb-1'>
-                            <input type="number" placeholder='Phone no.' name='phone' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' onChange={handleAction} />
+                            <input type="number" placeholder='Phone no.' name='phone' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col mb-1'>
                             <label htmlFor="birthday">Birthday</label>
-                            <input type="date" placeholder='Birthday' name='bday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' onChange={handleAction} />
+                            <input type="date" placeholder='Birthday' name='bday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
                             <input type="button" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-500' onClick={() => userCreateContact()} />

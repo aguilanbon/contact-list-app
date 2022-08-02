@@ -6,19 +6,22 @@ import SignUp from './pages/Signup/SignUp';
 import Home from './pages/Home/Home';
 import Profile from './pages/Home/Profile/Profile';
 import { ModalProvider } from './helpers/ModalContext';
+import { ContactsProvider } from './helpers/ContactContext';
 
 function App() {
   return (
     <SignUpProvider>
       <ModalProvider>
-        <div className="w-auto min-h-screen">
-        <Routes>
-          <Route path='/' element={ <Login /> }></Route>
-          <Route path='/signup' element={ <SignUp /> }></Route>
-          <Route path='/home' element={ <Home /> }></Route>
-          <Route path='/profile' element={ <Profile /> }></Route>
-        </Routes>
-        </div>
+        <ContactsProvider>
+          <div className="w-auto min-h-screen">
+            <Routes>
+              <Route path='/' element={ <Login /> }></Route>
+              <Route path='/signup' element={ <SignUp /> }></Route>
+              <Route path='/home' element={ <Home /> }></Route>
+                <Route path='/profile' element={ <Profile /> }></Route>
+            </Routes>
+          </div>
+        </ContactsProvider>
       </ModalProvider>
     </SignUpProvider>
   );
