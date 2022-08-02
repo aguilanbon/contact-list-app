@@ -7,11 +7,13 @@ import Home from './pages/Home/Home';
 import Profile from './pages/Home/Profile/Profile';
 import { ModalProvider } from './helpers/ModalContext';
 import { ContactsProvider } from './helpers/ContactContext';
+import { UserProvider } from './helpers/UserContext';
 
 function App() {
   return (
     <SignUpProvider>
       <ModalProvider>
+        <UserProvider>
         <ContactsProvider>
           <div className="w-auto min-h-screen">
             <Routes>
@@ -22,6 +24,7 @@ function App() {
             </Routes>
           </div>
         </ContactsProvider>
+        </UserProvider>
       </ModalProvider>
     </SignUpProvider>
   );

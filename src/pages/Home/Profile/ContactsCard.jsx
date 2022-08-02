@@ -11,8 +11,8 @@ function ContactsCard({ contact }) {
     const handleDelete = async (id) => {
         const response = await fetch(`http://localhost:4000/api/contacts/${id}`, { method: 'delete' })
         const data = await response.json()
-
-        dispatch({ type: 'DELETE_CONTACT', payload: data })
+        console.log(data);
+        // dispatch({ type: 'DELETE_CONTACT', payload: data })
     }
 
     const handleEditModal = (id) => {

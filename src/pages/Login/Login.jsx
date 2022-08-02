@@ -2,6 +2,9 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { useContext } from 'react';
+import ContactContext from '../../helpers/ContactContext';
+import UserContext from '../../helpers/UserContext';
 
 function Login() {
 
@@ -9,6 +12,8 @@ function Login() {
     const [password, setPassword] = useState('')
 
     const [signedInUser, setSignedInUser] = useState(null)
+    // const { dispatch } = useContext(ContactContext)
+    const { dispatch } = useContext(UserContext)
 
     let navigate = useNavigate()
 
@@ -19,6 +24,8 @@ function Login() {
             setSignedInUser(response.data)
             localStorage.setItem('uId', response.data._id)
             navigate('/home')
+            // dispatch({ type: 'SET_CONTACTS', payload: response.data.contacts })
+            dispatch({ type: 'SET_USER', payload: response.data })
         } catch (error) {
             console.log(error.response.data.msg);
         }

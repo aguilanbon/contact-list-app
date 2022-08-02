@@ -14,14 +14,16 @@ function Profile() {
     const { openModalType, setOpenModalType } = useContext(ModalContext)
     const { contacts, dispatch } = useContext(ContactContext)
 
+    const uid = localStorage.getItem('uId')
+
     useEffect(() => {
-        const getUserContacts = async () => {
-            const response = await axios.get('http://localhost:4000/api/contacts')
+        const getUserContacts = async (id) => {
+            const response = await axios.get(`http://localhost:4000/api/contacts/${id}`)
             if (response.statusText === 'OK') {
                 dispatch({ type: 'SET_CONTACTS', payload: response.data })
             }
         }
-        getUserContacts()
+        getUserContacts(uid)
     })
 
     return (
