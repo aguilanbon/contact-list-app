@@ -2,7 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import ContactContext from '../../../helpers/ContactContext'
 import { ModalContext } from '../../../helpers/ModalContext'
 import UserContext from '../../../helpers/UserContext'
@@ -19,6 +19,8 @@ function Profile() {
 
     const { users } = useContext(UserContext)
 
+    let navigate = useNavigate()
+
     const uid = window.localStorage.getItem('uId')
     useEffect(() => {
         const getUserContacts = async (id) => {
@@ -28,7 +30,14 @@ function Profile() {
             }
         }
         getUserContacts(uid)
-    })
+    }, [])
+
+    useEffect(() => {
+        const auth = localStorage.getItem('auth')
+        if (!auth) {
+            navigate('/')
+        }
+    }, [])
 
     // useEffect(() => {
     //     const getUser = async (id) => {

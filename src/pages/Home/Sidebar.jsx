@@ -7,6 +7,7 @@ function Sidebar() {
 
     const handleLogOut = () => {
         localStorage.setItem('uId', '')
+        localStorage.setItem('auth', '')
         navigate('/')
     }
 
