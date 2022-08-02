@@ -13,13 +13,9 @@ export const userReducer = (state, action) => {
             return {
                 users: [action.payload, ...state.users]
             }
-        case 'DELETE_CONTACT':
+        case 'UPDATE_USER':
             return {
-                users: state.users.filter((u) => u._id !== action.payload._id)
-            }
-        case 'UPDATE_CONTACT': 
-            return {
-                users: state.users.map((u) => u._id === action.payload._id ? {...action.payload} : u)
+                users: state.users._id === action.payload._id ? {...action.payload} : state.users
             }
         default: 
             return state

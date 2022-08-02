@@ -1,16 +1,33 @@
+import axios from 'axios'
 import React from 'react'
+import { useState } from 'react'
+import { useEffect } from 'react'
 import { useContext } from 'react'
+import { useNavigate } from 'react-router-dom'
 import UserContext from '../../../helpers/UserContext'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
 
-const handleInput = () => {
 
-}
 
 function EditProfile() {
+    let navigate = useNavigate()
 
-    const { users } = useContext(UserContext)
+    const [updated, setUpdated] = useState(null)
+    const { users, dispatch } = useContext(UserContext)
+
+    const handleEdit = async (id) => {
+        const response = await axios.patch(`http://localhost:4000/api/users/${id}`, updated)
+        dispatch({ type: 'UPDATE_USER', payload: response.data })
+        navigate('/profile')
+    }
+
+    const handleInput = (e) => {
+        setUpdated(prev => ({ ...prev, [e.target.name]: e.target.value }))
+    }
+
+    useEffect(() => {
+    }, [dispatch])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
@@ -37,7 +54,7 @@ function EditProfile() {
                             <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' name='bday' defaultValue={users.bday.slice(0, 10)} onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' />
+                            <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(users._id)} />
                         </div>
                     </form>
                 </div>
