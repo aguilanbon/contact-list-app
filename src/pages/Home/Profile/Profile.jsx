@@ -22,7 +22,7 @@ function Profile() {
             }
         }
         getUserContacts()
-    }, [])
+    })
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>

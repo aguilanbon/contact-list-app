@@ -13,6 +13,10 @@ export const contactsReducer = (state, action) => {
             return {
                 contacts: [action.payload, ...state.contacts]
             }
+        case 'DELETE_CONTACT':
+            return {
+                contacts: state.contacts.filter((c) => c._id !== action.payload._id)
+            }
         default: 
             return state
     }

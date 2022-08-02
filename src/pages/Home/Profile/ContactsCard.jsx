@@ -1,14 +1,18 @@
 import React from 'react'
 import { useContext } from 'react'
+import ContactContext from '../../../helpers/ContactContext'
 import ModalContext from '../../../helpers/ModalContext'
 
 function ContactsCard({ contact }) {
 
     const { setOpenModalType, setCurrentContactId } = useContext(ModalContext)
-
+    const { dispatch } = useContext(ContactContext)
 
     const handleDelete = async (id) => {
-        await fetch(`http://localhost:4000/api/contacts/${id}`, { method: 'delete' })
+        const response = await fetch(`http://localhost:4000/api/contacts/${id}`, { method: 'delete' })
+        const data = await response.json()
+
+        dispatch({ type: 'DELETE_CONTACT', payload: data })
     }
 
     const handleEditModal = (id) => {
