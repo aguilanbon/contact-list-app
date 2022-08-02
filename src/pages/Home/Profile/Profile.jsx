@@ -17,9 +17,8 @@ function Profile() {
 
     const { users } = useContext(UserContext)
 
-    const uid = localStorage.getItem('uId')
-
     useEffect(() => {
+        const uid = window.localStorage.getItem('uId')
         const getUserContacts = async (id) => {
             const response = await axios.get(`http://localhost:4000/api/contacts/${id}`)
             if (response.statusText === 'OK') {

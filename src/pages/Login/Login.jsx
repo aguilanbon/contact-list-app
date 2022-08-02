@@ -11,7 +11,6 @@ function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const [signedInUser, setSignedInUser] = useState(null)
     const { dispatch } = useContext(UserContext)
 
     let navigate = useNavigate()
@@ -20,15 +19,12 @@ function Login() {
         const loginDetails = { username, password }
         try {
             const response = await axios.post('http://localhost:4000/api/users/signin', loginDetails)
-            setSignedInUser(response.data)
-            localStorage.setItem('uId', response.data._id)
+            window.localStorage.setItem('uId', response.data._id)
             navigate('/home')
-            // dispatch({ type: 'SET_CONTACTS', payload: response.data.contacts })
             dispatch({ type: 'SET_USER', payload: response.data })
         } catch (error) {
             console.log(error.response.data.msg);
         }
-
     }
 
     return (

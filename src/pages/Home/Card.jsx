@@ -3,7 +3,7 @@ import { useState } from 'react'
 
 function Card({ user }) {
 
-    const [isAdmin, setIsAdmin] = useState(true)
+    const [isAdmin, setIsAdmin] = useState(false)
 
     return (
         <div className='h-14 border-b border-slate-200 bg-white rounded-sm shadow-md truncate'>
