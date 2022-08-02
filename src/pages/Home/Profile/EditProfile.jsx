@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
-import { useEffect } from 'react'
 import { useContext } from 'react'
 import { useNavigate } from 'react-router-dom'
 import UserContext from '../../../helpers/UserContext'
@@ -25,9 +24,6 @@ function EditProfile() {
     const handleInput = (e) => {
         setUpdated(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
-
-    useEffect(() => {
-    }, [dispatch])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>

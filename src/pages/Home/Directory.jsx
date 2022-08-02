@@ -5,12 +5,12 @@ import Card from './Card'
 
 function Directory() {
 
-    const [users, setUsers] = useState(null)
+    const [userLists, setUserLists] = useState(null)
 
     useEffect(() => {
         const getUsers = async () => {
             const response = await axios.get('http://localhost:4000/api/users')
-            setUsers(response.data)
+            setUserLists(response.data)
         }
 
         getUsers()
@@ -31,8 +31,8 @@ function Directory() {
                     </div>
                 </div>
                 <div className='w-full h-96 mt-4'>
-                    {users?.map(user => (
-                        <Card user={user} key={user._id} />
+                    {userLists?.map(userList => (
+                        <Card userList={userList} key={userList._id} />
                     ))}
                 </div>
             </div>

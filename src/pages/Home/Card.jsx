@@ -1,9 +1,20 @@
 import React from 'react'
+import { useContext } from 'react'
 import { useState } from 'react'
+import { Link } from 'react-router-dom'
+import UserContext from '../../helpers/UserContext'
 
-function Card({ user }) {
+function Card({ userList }) {
 
     const [isAdmin, setIsAdmin] = useState(false)
+
+    const { users } = useContext(UserContext)
+
+    useState(() => {
+        if (users.role === 'admin') {
+            setIsAdmin(true)
+        }
+    })
 
     return (
         <div className='h-14 border-b border-slate-200 bg-white rounded-sm shadow-md truncate'>
@@ -13,19 +24,19 @@ function Card({ user }) {
                 </div>
                 <div className='flex flex-col items-start w-1/3'>
                     <div className='flex sm:flex-row flex-col'>
-                        <p className='md:text-sm text-xs font-semibold mr-1'>{user.fName}</p>
-                        <p className='md:text-sm text-xs font-semibold sm:flex hidden'>{user.lName}</p>
+                        <p className='md:text-sm text-xs font-semibold mr-1'>{userList.fName}</p>
+                        <p className='md:text-sm text-xs font-semibold sm:flex hidden'>{userList.lName}</p>
                     </div>
-                    <p className='text-xs'>{user.role}</p>
+                    <p className='text-xs'>{userList.role}</p>
                 </div>
                 <div className='flex md:flex-row flex-col md:w-1/3 w-1/2 justify-between items-start'>
                     <div className='flex justify-between flex-col text-sm'>
-                        <p className='text-xs '>{user.email}</p>
-                        <p className='text-xs'>{user.phone}</p>
+                        <p className='text-xs '>{userList.email}</p>
+                        <p className='text-xs'>{userList.phone}</p>
                     </div>
                 </div>
                 <div className='sm:flex md:text-sm hidden md:w-1/3 w-1/2'>
-                    <p className='text-xs'>{user.address}</p>
+                    <p className='text-xs'>{userList.address}</p>
                 </div>
                 {!isAdmin && <div className='w-4 flex text-xs justify-end' >
                     <button className=' flex items-center cursor-pointer p-2 rounded-full hover:bg-black hover:bg-opacity-5'>
@@ -36,9 +47,11 @@ function Card({ user }) {
                 </div>}
 
                 {isAdmin && <div className='w-4 flex text-xs justify-end' >
-                    <button className=' flex items-center cursor-pointer py-1 px-2 rounded-full hover:bg-blue-500 hover:text-white border border-blue-500 text-blue-500'>
-                        Action
-                    </button>
+                    <Link to={`/admin/${userList._id}`} >
+                        <button className=' flex items-center cursor-pointer py-1 px-2 rounded-full hover:bg-blue-500 hover:text-white border border-blue-500 text-blue-500'>
+                            Action
+                        </button>
+                    </Link>
                 </div>
                 }
 

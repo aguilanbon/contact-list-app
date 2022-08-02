@@ -1,7 +1,15 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 function Sidebar() {
+
+    let navigate = useNavigate('/')
+
+    const handleLogOut = () => {
+        localStorage.setItem('uId', '')
+        navigate('/')
+    }
+
     return (
         <div className='w-auto min-h-screen flex shadow-xl bg-slate-800 text-white flex-col items-center justify-between pb-8 px-2'>
             <div className='flex flex-col'>
@@ -23,14 +31,14 @@ function Sidebar() {
                 </Link>
             </div>
             <div className='flex'>
-                <Link to='/' className='flex p-2 hover:bg-slate-900 rounded-lg'>
+                <button to='/' className='flex p-2 hover:bg-slate-900 rounded-lg' onClick={() => handleLogOut()}>
                     <div className='flex'>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
                         </svg>
                         <p className='text-xs ml-2 md:flex hidden'>Log Out</p>
                     </div>
-                </Link>
+                </button>
             </div>
         </div>
     )

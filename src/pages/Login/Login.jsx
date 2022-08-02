@@ -10,21 +10,23 @@ function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
 
-    const { dispatch } = useContext(UserContext)
-
     let navigate = useNavigate()
+
+    const { dispatch } = useContext(UserContext)
 
     const handleAction = async () => {
         const loginDetails = { username, password }
         try {
             const response = await axios.post('http://localhost:4000/api/users/signin', loginDetails)
-            window.localStorage.setItem('uId', response.data._id)
+            localStorage.setItem('uId', response.data._id)
             navigate('/home')
             dispatch({ type: 'SET_USER', payload: response.data })
+
         } catch (error) {
             console.log(error.response.data.msg);
         }
     }
+
 
     return (
         <div className='w-full h-screen flex flex-col'>

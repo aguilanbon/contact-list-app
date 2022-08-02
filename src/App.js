@@ -9,6 +9,7 @@ import { ModalProvider } from './helpers/ModalContext';
 import { ContactsProvider } from './helpers/ContactContext';
 import { UserProvider } from './helpers/UserContext';
 import EditProfile from './pages/Home/Profile/EditProfile';
+import Admin from './pages/Home/Profile/Admin';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
               <Route path='/home' element={ <Home /> }></Route>
               <Route path='/profile' element={ <Profile /> }></Route>
               <Route path='/profile/edit' element={ <EditProfile/> }></Route>
+              <Route path='/admin/:id' element={ <Admin />}></Route>
             </Routes>
           </div>
         </ContactsProvider>

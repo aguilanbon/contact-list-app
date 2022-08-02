@@ -11,7 +11,7 @@ export const userReducer = (state, action) => {
             }
         case 'CREATE_CONTACT':
             return {
-                users: [action.payload, ...state.users]
+                users: [action.payload, {...state.users}]
             }
         case 'UPDATE_USER':
             return {
