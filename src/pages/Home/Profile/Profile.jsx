@@ -30,14 +30,14 @@ function Profile() {
             }
         }
         getUserContacts(uid)
-    }, [])
+    })
 
     useEffect(() => {
         const auth = localStorage.getItem('auth')
         if (!auth) {
             navigate('/')
         }
-    }, [])
+    })
 
     // useEffect(() => {
     //     const getUser = async (id) => {

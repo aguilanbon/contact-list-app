@@ -1,8 +1,6 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
-import { useContext } from 'react'
 import { useState } from 'react'
-import UserContext from '../../helpers/UserContext'
 import Card from './Card'
 
 function Directory() {
