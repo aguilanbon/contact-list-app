@@ -12,7 +12,7 @@ function ContactsCard({ contact }) {
         const response = await fetch(`http://localhost:4000/api/contacts/${id}`, { method: 'delete' })
         const data = await response.json()
         console.log(data);
-        // dispatch({ type: 'DELETE_CONTACT', payload: data })
+        dispatch({ type: 'DELETE_CONTACT', payload: data })
     }
 
     const handleEditModal = (id) => {

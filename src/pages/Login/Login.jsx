@@ -12,7 +12,6 @@ function Login() {
     const [password, setPassword] = useState('')
 
     const [signedInUser, setSignedInUser] = useState(null)
-    // const { dispatch } = useContext(ContactContext)
     const { dispatch } = useContext(UserContext)
 
     let navigate = useNavigate()
