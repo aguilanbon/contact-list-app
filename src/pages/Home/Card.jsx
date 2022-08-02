@@ -1,20 +1,17 @@
 import React from 'react'
-import { useContext } from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
-import UserContext from '../../helpers/UserContext'
 
 function Card({ userList }) {
 
     const [isAdmin, setIsAdmin] = useState(false)
 
-    const { users } = useContext(UserContext)
-
     useState(() => {
-        if (users.role === 'admin') {
+        const auth = localStorage.getItem('auth')
+        if (auth === 'admin') {
             setIsAdmin(true)
         }
-    })
+    }, [])
 
     return (
         <div className='h-14 border-b border-slate-200 bg-white rounded-sm shadow-md truncate'>

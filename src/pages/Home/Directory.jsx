@@ -1,6 +1,8 @@
 import axios from 'axios'
 import React, { useEffect } from 'react'
+import { useContext } from 'react'
 import { useState } from 'react'
+import UserContext from '../../helpers/UserContext'
 import Card from './Card'
 
 function Directory() {
@@ -12,7 +14,6 @@ function Directory() {
             const response = await axios.get('http://localhost:4000/api/users')
             setUserLists(response.data)
         }
-
         getUsers()
     }, [])
 

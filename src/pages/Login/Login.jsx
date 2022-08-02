@@ -19,6 +19,7 @@ function Login() {
         try {
             const response = await axios.post('http://localhost:4000/api/users/signin', loginDetails)
             localStorage.setItem('uId', response.data._id)
+            localStorage.setItem('auth', response.data.role)
             navigate('/home')
             dispatch({ type: 'SET_USER', payload: response.data })
 
