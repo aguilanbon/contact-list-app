@@ -49,7 +49,10 @@ function Create() {
                     {errorMsgs && <p className='text-xs text-red-500'>{errorMsgs}</p>}
                 </div>
                 <div>
-                    <form action="" className='w-full flex flex-col mt-2'>
+                    <form onSubmit={(e) => {
+                        e.preventDefault()
+                        userCreateContact()
+                    }} action="" className='w-full flex flex-col mt-2'>
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
                             <div className='flex flex-col w-full items-center md:pl-1'>
                                 <input type="text" placeholder='First name' name='fName' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-4 mr-2 ml-2' onChange={handleInput} />
@@ -65,7 +68,7 @@ function Create() {
                             <p className='text-xs text-red-400'>{errorMsgs.email}</p>
 
                         </div>
-                        <div className='w-full flex items-center flex-col mb-1'>
+                        <div className='w-full flex items-center flex-col mb-1 pl-1'>
                             <input type="text" placeholder='Address' name='address' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mr-2' onChange={handleInput} />
                             <p className='text-xs text-red-400'>{errorMsgs.address}</p>
                         </div>
@@ -79,7 +82,7 @@ function Create() {
                             <input type="date" placeholder='Birthday' name='bday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-500' onClick={() => userCreateContact()} />
+                            <input type="submit" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-500' />
                         </div>
                     </form>
                 </div>
