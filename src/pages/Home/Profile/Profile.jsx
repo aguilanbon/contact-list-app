@@ -17,8 +17,8 @@ import toast from 'react-hot-toast'
 function Profile() {
 
     const { openModalType, setOpenModalType, friends, setFriends } = useContext(ModalContext)
-    const { contacts, dispatch } = useContext(ContactContext)
-    const { users, dispatch: altDispatch } = useContext(UserContext)
+    const { contacts, dispatch: altDispatch } = useContext(ContactContext)
+    const { users, dispatch } = useContext(UserContext)
 
     let navigate = useNavigate()
 
@@ -27,7 +27,7 @@ function Profile() {
     const handleDecline = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
         const response = await axios.patch(`http://localhost:4000/api/users/frd/${id}`, reqId)
-        altDispatch({ type: 'UPDATE_USER', payload: response.data })
+        dispatch({ type: 'UPDATE_USER', payload: response.data })
         toast('whyyyyyy???', {
             icon: '😭'
         })
@@ -36,7 +36,7 @@ function Profile() {
     const handleAccept = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
         const response = await axios.patch(`http://localhost:4000/api/users/fra/${id}`, reqId)
-        altDispatch({ type: 'UPDATE_USER', payload: response.data })
+        dispatch({ type: 'UPDATE_USER', payload: response.data })
         toast('yay! new friend', {
             icon: '👥'
         })
@@ -52,13 +52,12 @@ function Profile() {
     useEffect(() => {
         const getUser = async (id) => {
             const response = await axios.get(`http://localhost:4000/api/users/${id}`)
-            altDispatch({ type: 'SET_USER', payload: response.data })
-            dispatch({ type: 'SET_CONTACTS', payload: response.data.contacts })
+            dispatch({ type: 'SET_USER', payload: response.data })
+            altDispatch({ type: 'SET_CONTACTS', payload: response.data.contacts })
             setFriends(response.data.friends)
         }
         getUser(uid)
-    }, [uid, dispatch, altDispatch, users, setFriends])
-
+    }, [uid, dispatch, setFriends, altDispatch, users])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>

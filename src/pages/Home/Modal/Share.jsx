@@ -3,6 +3,7 @@ import React from 'react'
 import { useContext } from 'react'
 import ModalContext from '../../../helpers/ModalContext'
 import UserContext from '../../../helpers/UserContext'
+import toast from 'react-hot-toast'
 
 function Share() {
 
@@ -15,6 +16,9 @@ function Share() {
             const response = await axios.patch(`http://localhost:4000/api/users/share/${id}`, cId)
             dispatch({ type: 'UPDATE_USER', payload: response.data })
             setOpenModalType(null)
+            toast('Contact sent to recepient', {
+                icon: '📨'
+            })
         } catch (error) {
             console.log(error);
         }

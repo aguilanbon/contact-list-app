@@ -21,6 +21,7 @@ function Edit() {
         dispatch({ type: 'UPDATE_CONTACT', payload: response.data })
         setOpenModalType(null)
         toast.success('Contact updated!')
+        // window.location.reload(false)
     }
 
     const handleInput = (e) => {

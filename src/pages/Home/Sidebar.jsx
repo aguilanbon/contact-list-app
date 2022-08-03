@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function Sidebar() {
 
@@ -8,6 +9,9 @@ function Sidebar() {
     const handleLogOut = () => {
         localStorage.setItem('uId', '')
         localStorage.setItem('auth', '')
+        toast('Byee', {
+            icon: '👋'
+        })
         navigate('/')
     }
 
