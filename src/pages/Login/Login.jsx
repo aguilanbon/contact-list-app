@@ -9,6 +9,7 @@ function Login() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMsg, setErrorMsg] = useState('')
 
     const { dispatch } = useContext(UserContext)
 
@@ -23,7 +24,7 @@ function Login() {
             dispatch({ type: 'SET_USER', payload: response.data })
             navigate('/home')
         } catch (error) {
-            console.log(error.response.data.msg);
+            setErrorMsg(error.response.data.msg)
         }
     }
 
@@ -31,8 +32,9 @@ function Login() {
         <div className='w-full h-screen flex flex-col'>
             <div className='w-full mt-28 flex justify-center'>
                 <div className='md:w-96 sm:w-80 w-auto h-auto flex flex-col border border-slate-300 shadow-xl rounded-lg p-10'>
-                    <div className='w-full flex items-center justify-center'>
+                    <div className='w-full flex flex-col items-center justify-center'>
                         <h1 className='font-semibold text-xl text-gray-600'>Log in</h1>
+                        {errorMsg && <p className='text-xs text-red-500'>{errorMsg}</p>}
                     </div>
                     <form action="" className='flex flex-col mt-4'>
                         <div className='flex flex-col py-2'>
