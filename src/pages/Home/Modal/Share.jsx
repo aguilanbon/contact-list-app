@@ -1,7 +1,6 @@
 import axios from 'axios'
 import React from 'react'
 import { useContext } from 'react'
-import ContactContext from '../../../helpers/ContactContext'
 import ModalContext from '../../../helpers/ModalContext'
 import UserContext from '../../../helpers/UserContext'
 

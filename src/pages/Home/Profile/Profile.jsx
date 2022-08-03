@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -19,7 +18,6 @@ function Profile() {
     const { openModalType, setOpenModalType, friends, setFriends } = useContext(ModalContext)
     const { contacts, dispatch } = useContext(ContactContext)
     const { users, dispatch: altDispatch } = useContext(UserContext)
-    // const [contacts, setContacts] = useState(null)
 
     let navigate = useNavigate()
 
@@ -52,7 +50,7 @@ function Profile() {
             setFriends(response.data.friends)
         }
         getUser(uid)
-    }, [uid, altDispatch, users])
+    }, [uid, dispatch, altDispatch, users, setFriends])
 
 
     return (
