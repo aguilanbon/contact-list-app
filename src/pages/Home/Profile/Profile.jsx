@@ -65,9 +65,9 @@ function Profile() {
                                     <div className='flex flex-col items-center'>
                                         <h2 className='text-md md:text-lg text-cyan-700 font-bold'>{users?.fName} {users?.lName}</h2>
                                         <h1 className={`text-sm md:text-md 
-                                            ${users.role === 'user' && 'text-blue-600'}
-                                            ${users.role === 'supervisor' && 'text-green-600'}
-                                            ${users.role === 'admin' && 'text-orange-600'}
+                                            ${users?.role === 'user' && 'text-blue-600'}
+                                            ${users?.role === 'supervisor' && 'text-green-600'}
+                                            ${users?.role === 'admin' && 'text-orange-600'}
                                         `}>{users?.role}</h1>
                                         <h2 className='text-sm md:text-md text-slate-600 opacity-70'>{users?.email}</h2>
                                         <h2 className='text-sm md:text-md text-slate-600 opacity-70'>{users?.phone}</h2>

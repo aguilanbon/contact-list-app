@@ -19,7 +19,7 @@ export const contactsReducer = (state, action) => {
             }
         case 'UPDATE_CONTACT': 
             return {
-                contacts: state.contacts.map((c) => c._id === action.payload._id ? {...action.payload} : c)
+                contacts: state.contacts?.map((c) => c._id === action.payload._id ? {...action.payload} : c)
             }
         default: 
             return state
