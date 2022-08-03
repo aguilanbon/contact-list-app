@@ -32,7 +32,7 @@ function Directory() {
                 </div>
                 <div className='w-full h-96 mt-4'>
                     {userLists?.filter(userListFilter => userListFilter._id !== currentUid).map(userList => (
-                        <Card userList={userList} key={userList._id} />
+                        <Card userList={userList} key={userList._id} friends={userList.friends} />
                     )
                     )}
                 </div>
