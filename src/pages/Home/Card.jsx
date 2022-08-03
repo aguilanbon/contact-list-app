@@ -14,7 +14,6 @@ function Card({ userList, friends }) {
         const reqId = { reqId: localStorage.getItem('uId') }
         const response = await axios.patch(`http://localhost:4000/api/users/fr/${id}`, reqId)
         setIsDisabled(true)
-        console.log(response.data);
     }
 
     useState(() => {
@@ -60,7 +59,6 @@ function Card({ userList, friends }) {
                                 </svg>
                             </div>
                         </div>
-
                         :
                         <div className='w-4 flex text-xs justify-end mr-1' >
                             <button className={`flex items-center cursor-pointer p-1 rounded-full hover:text-white hover:bg-green-700 text-green-700 ${isDisabled && `hidden`}`} disabled={isDisabled} onClick={() => handleReq(userList._id)}>
