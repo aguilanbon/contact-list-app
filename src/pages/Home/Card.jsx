@@ -12,7 +12,7 @@ function Card({ userList, friends }) {
 
     const handleReq = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
-        const response = await axios.patch(`http://localhost:4000/api/users/fr/${id}`, reqId)
+        await axios.patch(`http://localhost:4000/api/users/fr/${id}`, reqId)
         setIsDisabled(true)
     }
 

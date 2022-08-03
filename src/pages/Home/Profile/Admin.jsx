@@ -26,7 +26,7 @@ function Admin() {
     }
 
     const handleDelete = async (id) => {
-        const response = await axios.delete(`http://localhost:4000/api/users/${id}`)
+        await axios.delete(`http://localhost:4000/api/users/${id}`)
         navigate('/home')
     }
 
