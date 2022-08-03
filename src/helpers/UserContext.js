@@ -15,7 +15,7 @@ export const userReducer = (state, action) => {
             }
         case 'UPDATE_USER':
             return {
-                users: state.users._id === action.payload._id ? {...action.payload} : state.users
+                users: state.users?._id === action.payload._id ? {...action.payload} : state.users
             }
         default: 
             return state

@@ -6,7 +6,7 @@ import Card from './Card'
 function Directory() {
 
     const [userLists, setUserLists] = useState(null)
-    const [currentUid, setCurrentUid] = useState(localStorage.getItem('uId'))
+    const currentUid = localStorage.getItem('uId')
 
     useEffect(() => {
         const getUsers = async () => {
@@ -14,7 +14,7 @@ function Directory() {
             setUserLists(response.data)
         }
         getUsers()
-    }, [])
+    })
 
     return (
         <div className='w-full h-auto flex sm:p-6 p-2'>
