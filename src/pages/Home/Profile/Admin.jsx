@@ -40,14 +40,14 @@ function Admin() {
             setCurrentUser(response.data)
         }
         getUser()
-    })
+    }, [id])
 
     useEffect(() => {
         const auth = localStorage.getItem('auth')
         if (auth !== 'admin') {
             navigate('/home')
         }
-    })
+    }, [navigate])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100' >

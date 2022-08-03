@@ -40,7 +40,7 @@ function Profile() {
         if (!auth) {
             navigate('/')
         }
-    })
+    }, [navigate])
 
     useEffect(() => {
         const getUser = async (id) => {

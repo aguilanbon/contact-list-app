@@ -15,8 +15,10 @@ function EditProfile() {
 
     const [updated, setUpdated] = useState(null)
     const { users, dispatch } = useContext(UserContext)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleEdit = async (id) => {
+        setIsLoading(true)
         const response = await axios.patch(`http://localhost:4000/api/users/${id}`, updated)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         navigate('/profile')
@@ -31,7 +33,7 @@ function EditProfile() {
         if (!auth) {
             navigate('/')
         }
-    })
+    }, [navigate])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
@@ -58,7 +60,7 @@ function EditProfile() {
                             <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' name='bday' defaultValue={users?.bday.slice(0, 10)} onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(users?._id)} />
+                            <input type="button" value={isLoading ? `Updating profile` : `update`} className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(users?._id)} />
                         </div>
                     </form>
                 </div>

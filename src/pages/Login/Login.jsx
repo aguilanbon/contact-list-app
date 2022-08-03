@@ -10,6 +10,7 @@ function Login() {
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [errorMsg, setErrorMsg] = useState('')
+    const [isLoading, setIsLoading] = useState(false)
 
     const { dispatch } = useContext(UserContext)
 
@@ -18,6 +19,7 @@ function Login() {
     const handleAction = async () => {
         const loginDetails = { username, password }
         try {
+            setIsLoading(true)
             const response = await axios.post('http://localhost:4000/api/users/signin', loginDetails)
             localStorage.setItem('uId', response.data._id)
             localStorage.setItem('auth', response.data.role)
@@ -44,7 +46,7 @@ function Login() {
                             <input type="password" name="password" id="" placeholder='Password' className='border border-slate-200 text-md p-2 rounded-md outline-blue-400' onChange={e => setPassword(e.target.value)} />
                         </div>
                         <div className='w-full flex py-2 mt-2'>
-                            <input type="button" value="Log in" className='w-full font-semibold bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md cursor-pointer outline-blue-400' onClick={handleAction} />
+                            <input type="button" value={isLoading ? `Logging in...` : `Log in`} className='w-full font-semibold bg-blue-500 hover:bg-blue-600 text-white p-2 rounded-md cursor-pointer outline-blue-400' onClick={handleAction} />
                         </div>
                     </form>
                     <div className='w-full border-b border-slate-300 mt-4'></div>

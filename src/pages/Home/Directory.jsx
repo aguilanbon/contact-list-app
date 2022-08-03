@@ -14,12 +14,13 @@ function Directory() {
             setUserLists(response.data)
         }
         getUsers()
-    })
+    }, [])
 
     return (
         <div className='w-full h-auto flex sm:p-6 p-2'>
             <div className='w-full h-auto flex flex-col'>
-                <div className='w-full flex items-center static'>
+                <h1 className='font-bold underline text-lg'>Directory</h1>
+                {/* <div className='w-full flex items-center static'>
                     <input type="text" name="search" id="" className='w-full border-b border-slate-800 outline-none bg-inherit pl-10 py-1' />
                     <div className='fixed'>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-cyan-700" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -29,7 +30,7 @@ function Directory() {
                     <div className='fixed sm:right-5 right-1 flex items-center justify-center'>
                         <button className='py-1 px-4 text-white text-sm rounded-full bg-cyan-600 hover:bg-cyan-700'>Search</button>
                     </div>
-                </div>
+                </div> */}
                 <div className='w-full h-96 mt-4'>
                     {userLists?.filter(userListFilter => userListFilter._id !== currentUid).map(userList => (
                         <Card userList={userList} key={userList._id} friends={userList.friends} />

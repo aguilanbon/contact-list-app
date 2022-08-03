@@ -12,8 +12,10 @@ function Edit() {
     const { dispatch } = useContext(ContactContext)
 
     const [currentContactDetails, setCurrentContactDetails] = useState(null)
+    const [isLoading, setIsLoading] = useState(false)
 
     const handleEdit = async (id) => {
+        setIsLoading(true)
         const response = await axios.patch(`http://localhost:4000/api/contacts/${id}`, currentContactDetails)
         dispatch({ type: 'UPDATE_CONTACT', payload: response.data })
         setOpenModalType(null)
@@ -63,7 +65,7 @@ function Edit() {
                             <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' name='bday' defaultValue={currentContactDetails?.bday?.slice(0, 10)} onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(currentContactDetails._id)} />
+                            <input type="button" value={isLoading ? `Updating` : 'Update'} className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(currentContactDetails._id)} />
                         </div>
                     </form>
                 </div>

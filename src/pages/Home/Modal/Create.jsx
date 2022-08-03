@@ -9,6 +9,7 @@ function Create() {
     const { setOpenModalType } = useContext(ModalContext)
     const { dispatch } = useContext(ContactContext)
     const userId = localStorage.getItem('uId')
+    const [isLoading, setIsLoading] = useState(false)
 
     const [createContact, setCreateContact] = useState({
         fName: '',
@@ -24,6 +25,7 @@ function Create() {
 
     const userCreateContact = async () => {
         try {
+            setIsLoading(true)
             const response = await axios.post('http://localhost:4000/api/contacts', createContact)
             dispatch({ type: 'CREATE_CONTACT', payload: response.data })
             setOpenModalType(null)
@@ -82,7 +84,7 @@ function Create() {
                             <input type="date" placeholder='Birthday' name='bday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="submit" value="Add" className='bg-green-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-500' />
+                            <input type="submit" value={isLoading ? `Creating contact` : 'Create'} className='bg-green-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-green-500' />
                         </div>
                     </form>
                 </div>
