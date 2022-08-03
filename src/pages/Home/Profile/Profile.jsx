@@ -1,6 +1,5 @@
 import axios from 'axios'
 import React from 'react'
-import { useState } from 'react'
 import { useEffect } from 'react'
 import { useContext } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
@@ -19,7 +18,6 @@ function Profile() {
     const { contacts, dispatch } = useContext(ContactContext)
 
     const { users, dispatch: altDispatch } = useContext(UserContext)
-    const [friendReq, setFriendReq] = useState(null)
 
     let navigate = useNavigate()
 
@@ -28,15 +26,21 @@ function Profile() {
     const handleDecline = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
         const response = await axios.patch(`http://localhost:4000/api/users/frd/${id}`, reqId)
-        console.log(response.data);
+        altDispatch({ type: 'UPDATE_USER', payload: response.data })
     }
-
 
     const handleAccept = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
         const response = await axios.patch(`http://localhost:4000/api/users/fra/${id}`, reqId)
-        console.log(response.data);
+        altDispatch({ type: 'UPDATE_USER', payload: response.data })
     }
+
+    useEffect(() => {
+        const auth = localStorage.getItem('auth')
+        if (!auth) {
+            navigate('/')
+        }
+    })
 
     useEffect(() => {
         const getUserContacts = async (id) => {
@@ -49,22 +53,12 @@ function Profile() {
     })
 
     useEffect(() => {
-        const auth = localStorage.getItem('auth')
-        if (!auth) {
-            navigate('/')
-        }
-    })
-
-    useEffect(() => {
         const getUser = async (id) => {
             const response = await axios.get(`http://localhost:4000/api/users/${id}`)
-            setFriendReq(response.data.requests)
             altDispatch({ type: 'SET_USER', payload: response.data })
         }
         getUser(uid)
-    }, [uid, altDispatch, handleDecline])
-
-
+    }, [uid, altDispatch, users])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
@@ -142,27 +136,27 @@ function Profile() {
                                     ))}
                                 </div>
                             </div>
-
-
-                            <div className='w-auto h-fit lg:ml-5 md:ml-0 md:mt-0 mt-4 flex-flex-col rounded-lg mr-4'>
-                                {friendReq?.map(rq => (
-                                    <div className='w-auto flex mt-4' key={rq._id}>
-                                        <div className='flex p-2 border border-slate-200 bg-white rounded-md items-center'>
-                                            <div className='flex'>
-                                                <p className='text-xs'><strong>{rq.fName} {rq.lName}</strong> sent you a friend request</p>
+                            {users?.requests &&
+                                <div className='w-auto h-fit lg:ml-5 md:ml-0 md:mt-0 mt-4 flex-flex-col rounded-lg mr-4'>
+                                    {
+                                        users.requests.map((rq, index) => (
+                                            <div className='w-auto flex mt-4' key={index}>
+                                                <div className='flex p-2 border border-slate-200 bg-white rounded-md items-center'>
+                                                    <div className='flex'>
+                                                        <p className='text-xs'><strong>{rq.fName} {rq.lName}</strong> sent you a friend request</p>
+                                                    </div>
+                                                    <div className='flex text-white ml-2'>
+                                                        <button className='text-xs rounded-md bg-green-400 p-1 mr-2' onClick={() => handleAccept(rq._id)}>Accept</button>
+                                                        <button className='text-xs rounded-md bg-red-400 p-1' onClick={() => handleDecline(rq._id)}>Decline</button>
+                                                    </div>
+                                                </div>
                                             </div>
-                                            <div className='flex text-white ml-2'>
-                                                <button className='text-xs rounded-md bg-green-400 p-1 mr-2' onClick={() => handleAccept(rq._id)}>Accept</button>
-                                                <button className='text-xs rounded-md bg-red-400 p-1' onClick={() => handleDecline(rq._id)}>Decline</button>
-                                            </div>
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
+                                        ))
 
-
+                                    }
+                                </div>
+                            }
                         </div>
-
                     </div>
                 </div>
             </div>

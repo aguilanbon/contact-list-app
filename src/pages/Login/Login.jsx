@@ -2,11 +2,15 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
+import { useContext } from 'react';
+import UserContext from '../../helpers/UserContext';
 
 function Login() {
 
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+
+    const { dispatch } = useContext(UserContext)
 
     let navigate = useNavigate()
 
@@ -16,6 +20,7 @@ function Login() {
             const response = await axios.post('http://localhost:4000/api/users/signin', loginDetails)
             localStorage.setItem('uId', response.data._id)
             localStorage.setItem('auth', response.data.role)
+            dispatch({ type: 'SET_USER', payload: response.data })
             navigate('/home')
         } catch (error) {
             console.log(error.response.data.msg);
