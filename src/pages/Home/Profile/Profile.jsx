@@ -31,6 +31,13 @@ function Profile() {
         console.log(response.data);
     }
 
+
+    const handleAccept = async (id) => {
+        const reqId = { reqId: localStorage.getItem('uId') }
+        const response = await axios.patch(`http://localhost:4000/api/users/fra/${id}`, reqId)
+        console.log(response.data);
+    }
+
     useEffect(() => {
         const getUserContacts = async (id) => {
             const response = await axios.get(`http://localhost:4000/api/contacts/${id}`)
@@ -145,7 +152,7 @@ function Profile() {
                                                 <p className='text-xs'><strong>{rq.fName} {rq.lName}</strong> sent you a friend request</p>
                                             </div>
                                             <div className='flex text-white ml-2'>
-                                                <button className='text-xs rounded-md bg-green-400 p-1 mr-2'>Accept</button>
+                                                <button className='text-xs rounded-md bg-green-400 p-1 mr-2' onClick={() => handleAccept(rq._id)}>Accept</button>
                                                 <button className='text-xs rounded-md bg-red-400 p-1' onClick={() => handleDecline(rq._id)}>Decline</button>
                                             </div>
                                         </div>
