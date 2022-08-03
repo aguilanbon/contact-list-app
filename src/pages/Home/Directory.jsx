@@ -6,6 +6,7 @@ import Card from './Card'
 function Directory() {
 
     const [userLists, setUserLists] = useState(null)
+    const [currentUid, setCurrentUid] = useState(localStorage.getItem('uId'))
 
     useEffect(() => {
         const getUsers = async () => {
@@ -30,9 +31,10 @@ function Directory() {
                     </div>
                 </div>
                 <div className='w-full h-96 mt-4'>
-                    {userLists?.map(userList => (
+                    {userLists?.filter(userListFilter => userListFilter._id !== currentUid).map(userList => (
                         <Card userList={userList} key={userList._id} />
-                    ))}
+                    )
+                    )}
                 </div>
             </div>
         </div>
