@@ -55,7 +55,8 @@ function Admin() {
             <Sidebar />
             <div className='w-full h-auto flex flex-col'>
                 <Header />
-                <div className='w-auto h-auto p-10 flex items-center justify-center'>
+                <div className='w-auto h-auto p-6 flex flex-col items-center justify-center'>
+                    <h1 className='mb-2'>{currentUser?.role.toUpperCase()}</h1>
                     <form action="" className='md:w-96 w-auto flex flex-col mt-2'>
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
                             <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' name='fName' defaultValue={currentUser?.fName} onChange={handleInput} />
@@ -73,6 +74,16 @@ function Admin() {
                         <div className='w-full flex flex-col mb-1'>
                             <label htmlFor="birthday">Birthday</label>
                             <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' name='bday' defaultValue={currentUser?.bday.slice(0, 10)} onChange={handleInput} />
+                        </div>
+
+                        <div className='w-full flex flex-col mb-1'>
+                            <label htmlFor="birthday">Promote/Demote User</label>
+                            <select className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' name="role" defaultValue={currentUser?.role} onChange={handleInput}>
+                                <option value={currentUser?.role}>Select Role for Promotion/Demotion</option>
+                                <option value="user">User</option>
+                                <option value="supervisor">Supervisor</option>
+                                <option value="admin">Admin</option>
+                            </select>
                         </div>
 
                         <div className='w-full flex flex-col py-2'>

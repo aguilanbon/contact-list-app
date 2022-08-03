@@ -24,7 +24,11 @@ function Card({ userList }) {
                         <p className='md:text-sm text-xs font-semibold mr-1'>{userList.fName}</p>
                         <p className='md:text-sm text-xs font-semibold sm:flex hidden'>{userList.lName}</p>
                     </div>
-                    <p className='text-xs'>{userList.role}</p>
+                    <p className={`text-xs 
+                    ${userList.role === 'user' && 'text-blue-600'}
+                    ${userList.role === 'supervisor' && 'text-green-600'}
+                    ${userList.role === 'admin' && 'text-orange-600'}
+                    `}>{userList.role}</p>
                 </div>
                 <div className='flex md:flex-row flex-col md:w-1/3 w-1/2 justify-between items-start'>
                     <div className='flex justify-between flex-col text-sm'>
