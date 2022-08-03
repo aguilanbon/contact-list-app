@@ -17,11 +17,12 @@ function Profile() {
     const { openModalType, setOpenModalType } = useContext(ModalContext)
     const { contacts, dispatch } = useContext(ContactContext)
 
-    const { users } = useContext(UserContext)
+    const { users, dispatch: altDispatch } = useContext(UserContext)
 
     let navigate = useNavigate()
 
-    const uid = window.localStorage.getItem('uId')
+    const uid = localStorage.getItem('uId')
+
     useEffect(() => {
         const getUserContacts = async (id) => {
             const response = await axios.get(`http://localhost:4000/api/contacts/${id}`)
@@ -39,13 +40,13 @@ function Profile() {
         }
     })
 
-    // useEffect(() => {
-    //     const getUser = async (id) => {
-    //         const response = await axios.get(`http://localhost:4000/api/users/${id}`)
-    //         dispatch({ type: 'SET_USER', payload: response.data })
-    //     }
-    //     getUser(uid)
-    // })
+    useEffect(() => {
+        const getUser = async (id) => {
+            const response = await axios.get(`http://localhost:4000/api/users/${id}`)
+            altDispatch({ type: 'SET_USER', payload: response.data })
+        }
+        getUser(uid)
+    }, [uid, altDispatch])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>

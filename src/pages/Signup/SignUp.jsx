@@ -38,9 +38,6 @@ function SignUp() {
         }
     }
 
-    console.log(userDetails);
-
-
     return (
         <div className='w-full h-screen flex flex-col mb-16'>
             <div className='w-full mt-28 flex justify-center'>

@@ -78,8 +78,12 @@ function Admin() {
                         <div className='w-full flex flex-col py-2'>
                             <input type="button" value="Update" className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(currentUser?._id)} />
                         </div>
-                        <div className='w-full flex flex-col py-2'>
-                            <input type="button" value="Delete" className='bg-red-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-red-500' onClick={() => handleDelete(currentUser?._id)} />
+                        <div className='w-full border-t border-x-slate-200'>
+                            <h2>Other Options</h2>
+                        </div>
+
+                        <div className='w-auto flex  py-2'>
+                            <input type="button" value="Delete User" className='bg-red-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-red-500' onClick={() => handleDelete(currentUser?._id)} />
                         </div>
                     </form>
                 </div>

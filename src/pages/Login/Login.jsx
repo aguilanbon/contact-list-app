@@ -2,8 +2,6 @@ import React from 'react'
 import { useState } from 'react';
 import { Link, useNavigate } from "react-router-dom";
 import axios from 'axios'
-import { useContext } from 'react';
-import UserContext from '../../helpers/UserContext';
 
 function Login() {
 
@@ -12,8 +10,6 @@ function Login() {
 
     let navigate = useNavigate()
 
-    const { dispatch } = useContext(UserContext)
-
     const handleAction = async () => {
         const loginDetails = { username, password }
         try {
@@ -21,13 +17,10 @@ function Login() {
             localStorage.setItem('uId', response.data._id)
             localStorage.setItem('auth', response.data.role)
             navigate('/home')
-            dispatch({ type: 'SET_USER', payload: response.data })
-
         } catch (error) {
             console.log(error.response.data.msg);
         }
     }
-
 
     return (
         <div className='w-full h-screen flex flex-col'>
