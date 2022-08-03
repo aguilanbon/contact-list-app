@@ -25,6 +25,12 @@ function Profile() {
 
     const uid = localStorage.getItem('uId')
 
+    const handleDecline = async (id) => {
+        const reqId = { reqId: localStorage.getItem('uId') }
+        const response = await axios.patch(`http://localhost:4000/api/users/frd/${id}`, reqId)
+        console.log(response.data);
+    }
+
     useEffect(() => {
         const getUserContacts = async (id) => {
             const response = await axios.get(`http://localhost:4000/api/contacts/${id}`)
@@ -49,7 +55,7 @@ function Profile() {
             altDispatch({ type: 'SET_USER', payload: response.data })
         }
         getUser(uid)
-    }, [uid, altDispatch])
+    }, [uid, altDispatch, handleDecline])
 
 
 
@@ -140,7 +146,7 @@ function Profile() {
                                             </div>
                                             <div className='flex text-white ml-2'>
                                                 <button className='text-xs rounded-md bg-green-400 p-1 mr-2'>Accept</button>
-                                                <button className='text-xs rounded-md bg-red-400 p-1'>Decline</button>
+                                                <button className='text-xs rounded-md bg-red-400 p-1' onClick={() => handleDecline(rq._id)}>Decline</button>
                                             </div>
                                         </div>
                                     </div>
