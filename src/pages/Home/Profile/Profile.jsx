@@ -12,6 +12,7 @@ import Sidebar from '../Sidebar'
 import ContactsCard from './ContactsCard'
 import EditProfile from './EditProfile'
 import FriendCard from './FriendCard'
+import toast from 'react-hot-toast'
 
 function Profile() {
 
@@ -27,12 +28,18 @@ function Profile() {
         const reqId = { reqId: localStorage.getItem('uId') }
         const response = await axios.patch(`http://localhost:4000/api/users/frd/${id}`, reqId)
         altDispatch({ type: 'UPDATE_USER', payload: response.data })
+        toast('whyyyyyy???', {
+            icon: '😭'
+        })
     }
 
     const handleAccept = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
         const response = await axios.patch(`http://localhost:4000/api/users/fra/${id}`, reqId)
         altDispatch({ type: 'UPDATE_USER', payload: response.data })
+        toast('yay! new friend', {
+            icon: '👥'
+        })
     }
 
     useEffect(() => {

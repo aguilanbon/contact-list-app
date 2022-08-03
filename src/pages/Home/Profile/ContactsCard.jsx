@@ -3,6 +3,7 @@ import { useContext } from 'react'
 import ContactContext from '../../../helpers/ContactContext'
 import ModalContext from '../../../helpers/ModalContext'
 import axios from 'axios'
+import toast from 'react-hot-toast'
 
 function ContactsCard({ contact }) {
 
@@ -14,6 +15,7 @@ function ContactsCard({ contact }) {
     const handleDelete = async (id) => {
         const response = await axios.delete(`http://localhost:4000/api/contacts/${id}`)
         dispatch({ type: 'DELETE_CONTACT', payload: response.data })
+        toast.success('Contact deleted!')
     }
 
     const handleEditModal = (id) => {

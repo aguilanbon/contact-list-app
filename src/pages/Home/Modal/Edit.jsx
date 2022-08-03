@@ -5,6 +5,7 @@ import { useState } from 'react'
 import { useContext } from 'react'
 import ContactContext from '../../../helpers/ContactContext'
 import ModalContext from '../../../helpers/ModalContext'
+import toast from 'react-hot-toast'
 
 function Edit() {
 
@@ -19,6 +20,7 @@ function Edit() {
         const response = await axios.patch(`http://localhost:4000/api/contacts/${id}`, currentContactDetails)
         dispatch({ type: 'UPDATE_CONTACT', payload: response.data })
         setOpenModalType(null)
+        toast.success('Contact updated!')
     }
 
     const handleInput = (e) => {

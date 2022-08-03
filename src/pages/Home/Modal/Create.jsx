@@ -3,6 +3,7 @@ import React from 'react'
 import { useContext, useState } from 'react'
 import ContactContext from '../../../helpers/ContactContext'
 import ModalContext from '../../../helpers/ModalContext'
+import toast from 'react-hot-toast'
 
 function Create() {
 
@@ -29,6 +30,7 @@ function Create() {
             const response = await axios.post('http://localhost:4000/api/contacts', createContact)
             dispatch({ type: 'CREATE_CONTACT', payload: response.data })
             setOpenModalType(null)
+            toast.success('Contact created')
         } catch (error) {
             setErrorMsgs(error.response.data.mssg);
         }

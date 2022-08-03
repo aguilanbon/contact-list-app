@@ -10,6 +10,7 @@ import { ContactsProvider } from './helpers/ContactContext';
 import { UserProvider } from './helpers/UserContext';
 import EditProfile from './pages/Home/Profile/EditProfile';
 import Admin from './pages/Home/Profile/Admin';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -17,6 +18,7 @@ function App() {
       <ModalProvider>
         <UserProvider>
         <ContactsProvider>
+          <Toaster />
           <div className="w-auto min-h-screen">
             <Routes>
               <Route path='/' element={ <Login /> }></Route>

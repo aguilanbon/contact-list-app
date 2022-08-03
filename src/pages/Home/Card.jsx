@@ -2,6 +2,7 @@ import axios from 'axios'
 import React from 'react'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import toast from 'react-hot-toast'
 
 function Card({ userList, friends }) {
 
@@ -14,6 +15,9 @@ function Card({ userList, friends }) {
         const reqId = { reqId: localStorage.getItem('uId') }
         await axios.patch(`http://localhost:4000/api/users/fr/${id}`, reqId)
         setIsDisabled(true)
+        toast('Friend request send', {
+            icon: '🤝'
+        })
     }
 
     useState(() => {
