@@ -16,11 +16,10 @@ import FriendCard from './FriendCard'
 
 function Profile() {
 
-    const { openModalType, setOpenModalType } = useContext(ModalContext)
+    const { openModalType, setOpenModalType, friends, setFriends } = useContext(ModalContext)
     const { contacts, dispatch } = useContext(ContactContext)
-
     const { users, dispatch: altDispatch } = useContext(UserContext)
-    const [friends, setFriends] = useState(null)
+    // const [contacts, setContacts] = useState(null)
 
     let navigate = useNavigate()
 
@@ -46,19 +45,10 @@ function Profile() {
     })
 
     useEffect(() => {
-        const getUserContacts = async (id) => {
-            const response = await axios.get(`http://localhost:4000/api/contacts/${id}`)
-            if (response.statusText === 'OK') {
-                dispatch({ type: 'SET_CONTACTS', payload: response.data })
-            }
-        }
-        getUserContacts(uid)
-    })
-
-    useEffect(() => {
         const getUser = async (id) => {
             const response = await axios.get(`http://localhost:4000/api/users/${id}`)
             altDispatch({ type: 'SET_USER', payload: response.data })
+            dispatch({ type: 'SET_CONTACTS', payload: response.data.contacts })
             setFriends(response.data.friends)
         }
         getUser(uid)
@@ -179,10 +169,7 @@ function Profile() {
                                     </div>
                                 }
                             </div>
-
                         </div>
-
-
                     </div>
                 </div>
             </div>

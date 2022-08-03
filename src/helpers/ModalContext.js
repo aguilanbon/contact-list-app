@@ -7,10 +7,12 @@ export const ModalProvider = ({children}) => {
 
     const [openModalType, setOpenModalType] = useState(null)
     const [currentContactId, setCurrentContactId] = useState(null)
+    const [friends, setFriends] = useState(null)
 
     const value = {
         openModalType, setOpenModalType,
-        currentContactId, setCurrentContactId
+        currentContactId, setCurrentContactId,
+        friends, setFriends
     }
 
     return (
