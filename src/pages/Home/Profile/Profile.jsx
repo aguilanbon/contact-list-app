@@ -95,10 +95,6 @@ function Profile() {
                                         </div>
                                         <div className='flex flex-col mt-1 ml-3'>
                                             <div className='mb-2'>
-                                                <h1 className='text-xs md:text-md font-semibold text-slate-400'>Age</h1>
-                                                <h2 className='text-sm md:text-md'>26</h2>
-                                            </div>
-                                            <div className='mb-2'>
                                                 <h1 className='text-xs md:text-md font-semibold text-slate-400'>Birthday</h1>
                                                 <h2 className='text-sm md:text-md'>{users?.bday.slice(0, 10)}</h2>
                                             </div>
