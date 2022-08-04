@@ -30,7 +30,8 @@ function SignUp() {
                 body: JSON.stringify(userDetails),
                 headers: { 'Content-Type': 'application/json' }
             })
-            await response.json()
+            const data = await response.json()
+            console.log(data);
             navigate('/')
 
         } catch (error) {

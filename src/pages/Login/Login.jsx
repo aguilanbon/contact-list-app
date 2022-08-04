@@ -27,6 +27,7 @@ function Login() {
             navigate('/home')
         } catch (error) {
             setErrorMsg(error.response.data.msg)
+            setIsLoading(false)
         }
     }
 
