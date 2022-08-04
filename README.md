@@ -13,7 +13,7 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
 # contact-list-app
 
-admin user:
+admin user:  
 
-username: admin
+username: admin  
 pw: admin
