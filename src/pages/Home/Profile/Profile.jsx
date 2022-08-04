@@ -68,7 +68,7 @@ function Profile() {
                 <div className='w-full h-auto flex md:p-6 p-4'>
                     <div className='w-full h-auto flex lg:flex-row flex-col'>
                         <div className='md:w-full h-auto lg:w-1/4 w-full flex flex-col md:flex-row lg:flex-col items-center md:mb-6'>
-                            <div className='w-full h-full border border-slate-200 bg-white rounded-lg  shadow-md pb-4'>
+                            <div className='w-full h-full border border-slate-200 bg-white rounded-md  shadow-md pb-4'>
                                 <div className='flex items-center justify-center py-4 px-8'>
                                     <img src="./profile.png" alt="" className='w-20 md:w-28' />
                                 </div>
@@ -110,7 +110,7 @@ function Profile() {
                         <div className='w-full flex flex-col lg:w-3/4 h-fit'>
                             <div className='flex flex-col w-full h-fit mb-4'>
                                 <div className='h-fit lg:ml-5 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col rounded-lg'>
-                                    <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-lg'>
+                                    <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-md'>
                                         <div className='w-full py-2 px-4 flex items-center'>
                                             <h1 className='text-cyan-600 md:text-sm text-xs w-full'>Friends</h1>
                                         </div>
@@ -125,7 +125,7 @@ function Profile() {
                             </div>
                             <div className='flex flex-col w-full h-fit'>
                                 <div className='h-fit lg:ml-5 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col rounded-lg'>
-                                    <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-lg'>
+                                    <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-md'>
                                         <div className='w-full py-2 px-4 flex items-center'>
                                             <h1 className='text-cyan-600 md:text-sm text-xs w-full'>Contacts</h1>
                                         </div>
