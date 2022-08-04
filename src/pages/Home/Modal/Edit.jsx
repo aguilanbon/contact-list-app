@@ -21,12 +21,15 @@ function Edit() {
         dispatch({ type: 'UPDATE_CONTACT', payload: response.data })
         setOpenModalType(null)
         toast.success('Contact updated!')
-        // window.location.reload(false)
     }
 
     const handleInput = (e) => {
         setCurrentContactDetails(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
+
+    // const handleImage = (e) => {
+    //     setCurrentContactDetails(prev => ({ ...prev, contactImage: e.target.files[0] }))
+    // }
 
     useEffect(() => {
         const findContact = async () => {
@@ -49,7 +52,11 @@ function Edit() {
                     <h1>Edit Contact</h1>
                 </div>
                 <div>
-                    <form action="" className='w-full flex flex-col mt-2'>
+                    <form onSubmit={(e) => {
+                        e.preventDefault()
+                        handleEdit(currentContactDetails._id)
+                    }} action="" encType='multipart/form-data' className='w-full flex flex-col mt-2'>
+                        {/* <input type="file" name="contactImage" onChange={handleImage} className='bg-slate-200' id="" /> */}
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
                             <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' name='fName' defaultValue={currentContactDetails?.fName} onChange={handleInput} />
                             <input type="text" placeholder='Last name' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' name='lName' defaultValue={currentContactDetails?.lName} onChange={handleInput} />
@@ -68,12 +75,12 @@ function Edit() {
                             <input type="date" placeholder='Birthday' className='w-full border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 mt-1' name='bday' defaultValue={currentContactDetails?.bday?.slice(0, 10)} onChange={handleInput} />
                         </div>
                         <div className='w-full flex flex-col py-2'>
-                            <input type="button" value={isLoading ? `Updating` : 'Update'} className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' onClick={() => handleEdit(currentContactDetails._id)} />
+                            <input type="submit" value={isLoading ? `Updating` : 'Update'} className='bg-yellow-400 text-white py-1 px-2 rounded-md cursor-pointer hover:bg-yellow-500' />
                         </div>
                     </form>
                 </div>
             </div>
-        </div>
+        </div >
     )
 }
 
