@@ -5,6 +5,7 @@ import FirstStep from './FirstStep'
 import SecondStep from './SecondStep'
 import { Link, useNavigate } from "react-router-dom";
 import { useState } from 'react'
+import toast from 'react-hot-toast'
 
 function SignUp() {
 
@@ -37,6 +38,7 @@ function SignUp() {
                 setSignUpError('Please fill in all page')
             } else {
                 navigate('/')
+                toast.success('You may now log in')
             }
         } catch (error) {
             if (error) {

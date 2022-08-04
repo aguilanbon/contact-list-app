@@ -7,6 +7,7 @@ import { useNavigate, useParams } from 'react-router-dom'
 import UserContext from '../../../helpers/UserContext'
 import Header from '../Header'
 import Sidebar from '../Sidebar'
+import toast from 'react-hot-toast'
 
 function Admin() {
 
@@ -23,11 +24,15 @@ function Admin() {
         const response = await axios.patch(`http://localhost:4000/api/users/${id}`, updatedUser)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         navigate('/home')
+        toast.success('User updated')
     }
 
     const handleDelete = async (id) => {
         await axios.delete(`http://localhost:4000/api/users/${id}`)
         navigate('/home')
+        toast('User deleted', {
+            icon: '⛔'
+        })
     }
 
     const handleInput = (e) => {
