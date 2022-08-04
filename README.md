@@ -1,6 +1,9 @@
-# Getting Started with Create React App
+# contact-list-app
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+##### admin user:  
+
+username: admin  
+pw: admin  
 
 ### `git clone`
 ### `npm install`
@@ -9,9 +12,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
-# contact-list-app
+# server-list-app
 
-##### admin user:  
+Backend  
 
-username: admin  
-pw: admin
+link: [link](https://github.com/aguilanbon/contacts-app-server)
+
