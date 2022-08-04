@@ -20,6 +20,7 @@ function SignUp() {
         phone: null,
         bday: null,
     })
+    const [signUpError, setSignUpError] = useState('')
 
     let navigate = useNavigate()
 
@@ -31,11 +32,18 @@ function SignUp() {
                 headers: { 'Content-Type': 'application/json' }
             })
             const data = await response.json()
-            console.log(data);
-            navigate('/')
-
+            if (data.error) {
+                navigate('/signup')
+                setSignUpError('Please fill in all page')
+            } else {
+                navigate('/')
+            }
         } catch (error) {
-            console.log(error);
+            if (error) {
+                navigate('/signup')
+                setSignUpError('Please fill in all page')
+            }
+
         }
     }
 
@@ -52,12 +60,13 @@ function SignUp() {
                         </div>
                         : ''
                     }
-                    <div className='w-full flex items-center justify-center'>
+                    <div className='w-full flex flex-col items-center justify-center'>
                         <h1 className='font-semibold text-xl text-gray-600'>Sign Up</h1>
+                        <p className='text-xs text-red-400'>{signUpError}</p>
                     </div>
                     {signUpStep === 1 &&
                         <>
-                            <FirstStep setUserDetails={setUserDetails} />
+                            <FirstStep setUserDetails={setUserDetails} userDetails={userDetails} />
                             <div className='w-full border-b border-slate-300 mt-4'></div>
                             <div className='w-full flex items-center justify-center'>
                                 <Link to='/' className='mt-4 text-blue-500 hover:border-b hover:border-blue-500 cursor-pointer'>Go back to Log in page</Link>

@@ -15,7 +15,7 @@ function Card({ userList, friends }) {
         const reqId = { reqId: localStorage.getItem('uId') }
         await axios.patch(`http://localhost:4000/api/users/fr/${id}`, reqId)
         setIsDisabled(true)
-        toast('Friend request sens', {
+        toast('Friend request sent', {
             icon: '🤝'
         })
     }
