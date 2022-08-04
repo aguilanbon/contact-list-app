@@ -109,9 +109,7 @@ function Profile() {
                             </div>
                         </div>
 
-
                         <div className='w-full flex flex-col lg:w-3/4 h-fit'>
-
                             <div className='flex flex-col w-full h-fit mb-4'>
                                 <div className='h-fit lg:ml-5 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col rounded-lg'>
                                     <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-lg'>
@@ -127,7 +125,6 @@ function Profile() {
                                     </div>
                                 </div>
                             </div>
-
                             <div className='flex flex-col w-full h-fit'>
                                 <div className='h-fit lg:ml-5 md:ml-0 md:mt-0 mt-4 border-x border-b border-slate-200 flex-flex-col rounded-lg'>
                                     <div className='w-full flex items-center justify-between bg-slate-800 rounded-t-lg'>
@@ -164,7 +161,6 @@ function Profile() {
                                                     </div>
                                                 </div>
                                             ))
-
                                         }
                                     </div>
                                 }
