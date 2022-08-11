@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 function FriendCard({ friend }) {
 
     const handleDelete = async (id) => {
-        await axios.patch(`http://localhost:4000/api/users/frdel/${id}`, { uId: localStorage.getItem('uId') })
+        await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/frdel/${id}`, { uId: localStorage.getItem('uId') })
         toast.success('Friend deleted')
     }
 

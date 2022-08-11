@@ -20,7 +20,7 @@ function Login() {
         const loginDetails = { username, password }
         try {
             setIsLoading(true)
-            const response = await axios.post('http://localhost:4000/api/users/signin', loginDetails)
+            const response = await axios.post('https://contacts-app-mern.herokuapp.com/api/users/signin', loginDetails)
             localStorage.setItem('uId', response.data._id)
             localStorage.setItem('auth', response.data.role)
             dispatch({ type: 'SET_USER', payload: response.data })

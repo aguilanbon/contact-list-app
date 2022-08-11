@@ -13,7 +13,7 @@ function ContactsCard({ contact }) {
     const uId = localStorage.getItem('uId')
 
     const handleDelete = async (id) => {
-        const response = await axios.delete(`http://localhost:4000/api/contacts/${id}`)
+        const response = await axios.delete(`https://contacts-app-mern.herokuapp.com/api/contacts/${id}`)
         dispatch({ type: 'DELETE_CONTACT', payload: response.data })
         toast.success('Contact deleted!')
     }

@@ -26,7 +26,7 @@ function Profile() {
 
     const handleDecline = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
-        const response = await axios.patch(`http://localhost:4000/api/users/frd/${id}`, reqId)
+        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/frd/${id}`, reqId)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         toast('whyyyyyy???', {
             icon: '😭'
@@ -35,7 +35,7 @@ function Profile() {
 
     const handleAccept = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
-        const response = await axios.patch(`http://localhost:4000/api/users/fra/${id}`, reqId)
+        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/fra/${id}`, reqId)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         toast('yay! new friend', {
             icon: '👥'
@@ -51,7 +51,7 @@ function Profile() {
 
     useEffect(() => {
         const getUser = async (id) => {
-            const response = await axios.get(`http://localhost:4000/api/users/${id}`)
+            const response = await axios.get(`https://contacts-app-mern.herokuapp.com/api/users/${id}`)
             dispatch({ type: 'SET_USER', payload: response.data })
             altDispatch({ type: 'SET_CONTACTS', payload: response.data.contacts })
             setFriends(response.data.friends)

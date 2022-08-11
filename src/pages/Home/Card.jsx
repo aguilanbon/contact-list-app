@@ -13,7 +13,7 @@ function Card({ userList, friends }) {
 
     const handleReq = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
-        await axios.patch(`http://localhost:4000/api/users/fr/${id}`, reqId)
+        await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/fr/${id}`, reqId)
         setIsDisabled(true)
         toast('Friend request sent', {
             icon: '🤝'

@@ -27,7 +27,7 @@ function Create() {
     const userCreateContact = async () => {
         try {
             setIsLoading(true)
-            const response = await axios.post('http://localhost:4000/api/contacts', createContact)
+            const response = await axios.post('https://contacts-app-mern.herokuapp.com/api/contacts', createContact)
             dispatch({ type: 'CREATE_CONTACT', payload: response.data })
             setOpenModalType(null)
             toast.success('Contact created')

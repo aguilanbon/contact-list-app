@@ -27,7 +27,7 @@ function SignUp() {
 
     const handleSignUp = async () => {
         try {
-            const response = await fetch('http://localhost:4000/api/users', {
+            const response = await fetch('https://contacts-app-mern.herokuapp.com/api/users', {
                 method: 'post',
                 body: JSON.stringify(userDetails),
                 headers: { 'Content-Type': 'application/json' }

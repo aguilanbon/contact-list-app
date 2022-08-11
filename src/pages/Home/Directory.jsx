@@ -10,7 +10,7 @@ function Directory() {
 
     useEffect(() => {
         const getUsers = async () => {
-            const response = await axios.get('http://localhost:4000/api/users')
+            const response = await axios.get('https://contacts-app-mern.herokuapp.com/api/users')
             setUserLists(response.data)
         }
         getUsers()

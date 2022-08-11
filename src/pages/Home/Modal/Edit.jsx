@@ -17,7 +17,7 @@ function Edit() {
 
     const handleEdit = async (id) => {
         setIsLoading(true)
-        const response = await axios.patch(`http://localhost:4000/api/contacts/${id}`, currentContactDetails)
+        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/contacts/${id}`, currentContactDetails)
         dispatch({ type: 'UPDATE_CONTACT', payload: response.data })
         setOpenModalType(null)
         toast.success('Contact updated!')
@@ -33,7 +33,7 @@ function Edit() {
 
     useEffect(() => {
         const findContact = async () => {
-            const response = await fetch(`http://localhost:4000/api/contacts/single/${currentContactId}`)
+            const response = await fetch(`https://contacts-app-mern.herokuapp.com/contacts/single/${currentContactId}`)
             const data = await response.json()
             setCurrentContactDetails(data)
         }

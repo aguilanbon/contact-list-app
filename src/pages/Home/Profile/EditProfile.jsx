@@ -19,7 +19,7 @@ function EditProfile() {
 
     const handleEdit = async (id) => {
         setIsLoading(true)
-        const response = await axios.patch(`http://localhost:4000/api/users/${id}`, updated)
+        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/${id}`, updated)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         navigate('/profile')
     }
