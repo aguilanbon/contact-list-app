@@ -33,7 +33,7 @@ function Edit() {
 
     useEffect(() => {
         const findContact = async () => {
-            const response = await fetch(`https://contacts-app-mern.herokuapp.com/contacts/single/${currentContactId}`)
+            const response = await fetch(`https://contacts-app-mern.herokuapp.com/api/contacts/single/${currentContactId}`)
             const data = await response.json()
             setCurrentContactDetails(data)
         }
