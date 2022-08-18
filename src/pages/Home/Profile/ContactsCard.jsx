@@ -13,7 +13,7 @@ function ContactsCard({ contact }) {
     const uId = localStorage.getItem('uId')
 
     const handleDelete = async (id) => {
-        const response = await axios.delete(`https://contacts-app-mern.herokuapp.com/api/contacts/${id}`)
+        const response = await axios.delete(`http://localhost:4000/api/contacts/${id}`)
         dispatch({ type: 'DELETE_CONTACT', payload: response.data })
         toast.success('Contact deleted!')
     }
@@ -27,13 +27,12 @@ function ContactsCard({ contact }) {
         setOpenModalType('share')
         setCurrentContactId(id)
     }
-
     return (
         <div className='w-full flex'>
             <div className='w-full flex flex-col'>
                 <div className='w-auto flex flex-row items-center p-2 bg-white hover:bg-slate-200 border-b border-slate-200 justify-evenly'>
                     <div className='w-full flex items-center'>
-                        <img src="./profile.png" alt="" className='w-10 h-10' />
+                        <img src={contact.contactImage === 'avatar' ? `http://localhost:4000/uploads/profile.png` : `http://localhost:4000/uploads/${contact?.contactImage}`} alt="" className='w-10 h-10 rounded-full object-cover' />
                         <div className='flex flex-col ml-2'>
                             <p className='text-sm font-semibold'>{contact.fName} {contact.lName}</p>
                         </div>

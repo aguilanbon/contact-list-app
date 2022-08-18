@@ -13,7 +13,7 @@ function Share() {
     const handleShare = async (id) => {
         try {
             const cId = { cId: currentContactId }
-            const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/share/${id}`, cId)
+            const response = await axios.patch(`http://localhost:4000/api/users/share/${id}`, cId)
             dispatch({ type: 'UPDATE_USER', payload: response.data })
             setOpenModalType(null)
             toast('Contact sent to recepient', {

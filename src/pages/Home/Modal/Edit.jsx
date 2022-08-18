@@ -17,7 +17,19 @@ function Edit() {
 
     const handleEdit = async (id) => {
         setIsLoading(true)
-        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/contacts/${id}`, currentContactDetails)
+
+        const formData = new FormData()
+
+        formData.append('fName', currentContactDetails.fName)
+        formData.append('lName', currentContactDetails.lName)
+        formData.append('email', currentContactDetails.email)
+        formData.append('address', currentContactDetails.address)
+        formData.append('phone', currentContactDetails.phone)
+        formData.append('bday', currentContactDetails.bday)
+        formData.append('contactImage', currentContactDetails.contactImage)
+
+
+        const response = await axios.patch(`http://localhost:4000/api/contacts/${id}`, formData)
         dispatch({ type: 'UPDATE_CONTACT', payload: response.data })
         setOpenModalType(null)
         toast.success('Contact updated!')
@@ -27,13 +39,13 @@ function Edit() {
         setCurrentContactDetails(prev => ({ ...prev, [e.target.name]: e.target.value }))
     }
 
-    // const handleImage = (e) => {
-    //     setCurrentContactDetails(prev => ({ ...prev, contactImage: e.target.files[0] }))
-    // }
+    const handleImage = (e) => {
+        setCurrentContactDetails(prev => ({ ...prev, contactImage: e.target.files[0] }))
+    }
 
     useEffect(() => {
         const findContact = async () => {
-            const response = await fetch(`https://contacts-app-mern.herokuapp.com/api/contacts/single/${currentContactId}`)
+            const response = await fetch(`http://localhost:4000/api/contacts/single/${currentContactId}`)
             const data = await response.json()
             setCurrentContactDetails(data)
         }
@@ -56,7 +68,7 @@ function Edit() {
                         e.preventDefault()
                         handleEdit(currentContactDetails._id)
                     }} action="" encType='multipart/form-data' className='w-full flex flex-col mt-2'>
-                        {/* <input type="file" name="contactImage" onChange={handleImage} className='bg-slate-200' id="" /> */}
+                        <input type="file" name="contactImage" onChange={handleImage} className='bg-slate-200' id="" />
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
                             <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' name='fName' defaultValue={currentContactDetails?.fName} onChange={handleInput} />
                             <input type="text" placeholder='Last name' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' name='lName' defaultValue={currentContactDetails?.lName} onChange={handleInput} />

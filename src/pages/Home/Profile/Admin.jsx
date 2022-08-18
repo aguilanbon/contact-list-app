@@ -21,14 +21,14 @@ function Admin() {
     let navigate = useNavigate()
 
     const handleEdit = async (id) => {
-        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/${id}`, updatedUser)
+        const response = await axios.patch(`http://localhost:4000/api/users/${id}`, updatedUser)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         navigate('/home')
         toast.success('User updated')
     }
 
     const handleDelete = async (id) => {
-        await axios.delete(`https://contacts-app-mern.herokuapp.com/api/users/${id}`)
+        await axios.delete(`http://localhost:4000/api/users/${id}`)
         navigate('/home')
         toast('User deleted', {
             icon: '⛔'
@@ -41,7 +41,7 @@ function Admin() {
 
     useEffect(() => {
         const getUser = async () => {
-            const response = await axios.get(`https://contacts-app-mern.herokuapp.com/api/users/${id}`)
+            const response = await axios.get(`http://localhost:4000/api/users/${id}`)
             setCurrentUser(response.data)
         }
         getUser()
