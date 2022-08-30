@@ -32,7 +32,6 @@ function ContactsCard({ contact }) {
         setCurrentContactId(id)
     }
 
-    console.log(contact);
     return (
         <div className='w-full flex'>
             <div className='w-full flex flex-col'>
