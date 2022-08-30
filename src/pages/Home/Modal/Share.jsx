@@ -21,6 +21,7 @@ function Share() {
             })
         } catch (error) {
             console.log(error);
+            toast.error('User already has that contact')
         }
     }
 
