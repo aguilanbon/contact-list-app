@@ -13,9 +13,13 @@ function ContactsCard({ contact }) {
     const uId = localStorage.getItem('uId')
 
     const handleDelete = async (id) => {
-        const response = await axios.delete(`http://localhost:4000/api/contacts/${id}`)
-        dispatch({ type: 'DELETE_CONTACT', payload: response.data })
-        toast.success('Contact deleted!')
+        try {
+            const response = await axios.delete(`http://localhost:4000/api/contacts/${id}`, { data: { uId: uId } })
+            dispatch({ type: 'DELETE_CONTACT', payload: response.data })
+            toast.success('Contact deleted!')
+        } catch (error) {
+            toast.error(error.response.data.mss)
+        }
     }
 
     const handleEditModal = (id) => {
