@@ -57,7 +57,7 @@ function Profile() {
             setFriends(response.data.friends)
         }
         getUser(uid)
-    }, [uid, dispatch, setFriends, altDispatch, users])
+    }, [])
 
     return (
         <div className='w-full min-h-screen flex bg-slate-100'>
