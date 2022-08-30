@@ -5,7 +5,7 @@ import toast from 'react-hot-toast'
 function FriendCard({ friend }) {
 
     const handleDelete = async (id) => {
-        await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/frdel/${id}`, { uId: localStorage.getItem('uId') })
+        await axios.patch(`http://localhost:4000/api/users/frdel/${id}`, { uId: localStorage.getItem('uId') })
         toast.success('Friend deleted')
     }
 
@@ -14,7 +14,7 @@ function FriendCard({ friend }) {
             <div className='w-full flex flex-col'>
                 <div className='w-auto flex flex-row items-center p-2 bg-white hover:bg-slate-200 border-b border-slate-200 justify-evenly'>
                     <div className='w-full flex items-center'>
-                        <img src="./profile.png" alt="" className='w-10 h-10' />
+                        <img src={friend.userImage === 'avatar' ? `http://localhost:4000/uploads/profile.png` : `http://localhost:4000/uploads/users/${friend?.userImage}`} alt="" className='w-10 h-10 rounded-full object-cover' />
                         <div className='flex flex-col ml-2'>
                             <p className='text-sm font-semibold'>{friend?.fName} {friend?.lName}</p>
                         </div>

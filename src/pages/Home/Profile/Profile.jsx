@@ -26,7 +26,7 @@ function Profile() {
 
     const handleDecline = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
-        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/frd/${id}`, reqId)
+        const response = await axios.patch(`http://localhost:4000/api/users/frd/${id}`, reqId)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         toast('whyyyyyy???', {
             icon: '😭'
@@ -35,7 +35,7 @@ function Profile() {
 
     const handleAccept = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
-        const response = await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/fra/${id}`, reqId)
+        const response = await axios.patch(`http://localhost:4000/api/users/fra/${id}`, reqId)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
         toast('yay! new friend', {
             icon: '👥'
@@ -51,7 +51,7 @@ function Profile() {
 
     useEffect(() => {
         const getUser = async (id) => {
-            const response = await axios.get(`https://contacts-app-mern.herokuapp.com/api/users/${id}`)
+            const response = await axios.get(`http://localhost:4000/api/users/${id}`)
             dispatch({ type: 'SET_USER', payload: response.data })
             altDispatch({ type: 'SET_CONTACTS', payload: response.data.contacts })
             setFriends(response.data.friends)
@@ -70,7 +70,7 @@ function Profile() {
                         <div className='md:w-full h-auto lg:w-1/4 w-full flex flex-col md:flex-row lg:flex-col items-center md:mb-6'>
                             <div className='w-full h-full border border-slate-200 bg-white rounded-md  shadow-md pb-4'>
                                 <div className='flex items-center justify-center py-4 px-8'>
-                                    <img src="./profile.png" alt="" className='w-20 md:w-28' />
+                                    <img src={users?.userImage === 'avatar' ? `http://localhost:4000/uploads/profile.png` : `http://localhost:4000/uploads/users/${users?.userImage}`} alt="" className='w-20 md:w-28 h-20 md:h-28 rounded-full object-cover' />
                                 </div>
                                 <div className='w-full flex flex-col items-center mt-2 md:px-4 px-0'>
                                     <div className='flex flex-col items-center'>

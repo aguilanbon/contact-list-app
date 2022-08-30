@@ -13,7 +13,7 @@ function Card({ userList, friends }) {
 
     const handleReq = async (id) => {
         const reqId = { reqId: localStorage.getItem('uId') }
-        await axios.patch(`https://contacts-app-mern.herokuapp.com/api/users/fr/${id}`, reqId)
+        await axios.patch(`http://localhost:4000/api/users/fr/${id}`, reqId)
         setIsDisabled(true)
         toast('Friend request sent', {
             icon: '🤝'
@@ -31,7 +31,7 @@ function Card({ userList, friends }) {
         <div className='h-14 border-b border-slate-200 bg-white rounded-sm shadow-md truncate'>
             <div className='flex w-full items-center py-2 px-4'>
                 <div className='h-full flex items-center justify-center md:w-1/6 w-12 mr-2'>
-                    <img src="./profile.png" alt="" className='w-8 h-8' />
+                    <img src={userList.userImage === 'avatar' ? `http://localhost:4000/uploads/profile.png` : `http://localhost:4000/uploads/users/${userList?.userImage}`} alt="" className='w-8 h-8 rounded-full object-cover' />
                 </div>
                 <div className='flex flex-col items-start w-1/3'>
                     <div className='flex sm:flex-row flex-col'>
