@@ -48,8 +48,8 @@ function Create() {
                 </svg>
             </div>
             <div className='w-full h-auto px-4 py-2 flex-flex-col'>
-                <div className='flex items-center flex-col'>
-                    <h1>Create New Contact</h1>
+                <div className='flex items-center flex-col mb-8'>
+                    <h1 className='text-xl font-bold underline'>Create New Contact</h1>
                     {errorMsgs && <p className='text-xs text-red-500'>{errorMsgs}</p>}
                 </div>
                 <div>

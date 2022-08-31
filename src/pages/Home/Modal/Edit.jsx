@@ -60,15 +60,16 @@ function Edit() {
                 </svg>
             </div>
             <div className='w-full h-auto px-4 py-2 flex-flex-col'>
-                <div>
-                    <h1>Edit Contact</h1>
+                <div className='mb-8 flex items-center justify-center'>
+                    <h1 className='text-xl font-bold underline'>Edit Contact</h1>
                 </div>
                 <div>
                     <form onSubmit={(e) => {
                         e.preventDefault()
                         handleEdit(currentContactDetails._id)
                     }} action="" encType='multipart/form-data' className='w-full flex flex-col mt-2'>
-                        <input type="file" name="contactImage" onChange={handleImage} className='bg-slate-50 mb-1' id="" />
+                        <label htmlFor="contactImage" className='mb-1 text-sm text-slate-500'>Avatar</label>
+                        <input type="file" name="contactImage" onChange={handleImage} className='bg-slate-50 mb-4' id="" />
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
                             <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' name='fName' defaultValue={currentContactDetails?.fName} onChange={handleInput} />
                             <input type="text" placeholder='Last name' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' name='lName' defaultValue={currentContactDetails?.lName} onChange={handleInput} />
