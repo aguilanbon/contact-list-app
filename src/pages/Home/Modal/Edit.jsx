@@ -68,7 +68,7 @@ function Edit() {
                         e.preventDefault()
                         handleEdit(currentContactDetails._id)
                     }} action="" encType='multipart/form-data' className='w-full flex flex-col mt-2'>
-                        <input type="file" name="contactImage" onChange={handleImage} className='bg-slate-200 mb-1' id="" />
+                        <input type="file" name="contactImage" onChange={handleImage} className='bg-slate-50 mb-1' id="" />
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
                             <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' name='fName' defaultValue={currentContactDetails?.fName} onChange={handleInput} />
                             <input type="text" placeholder='Last name' className='w-full mt-1 md:mt-0 border border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400' name='lName' defaultValue={currentContactDetails?.lName} onChange={handleInput} />
