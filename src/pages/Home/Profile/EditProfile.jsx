@@ -62,7 +62,7 @@ function EditProfile() {
                         handleEdit(users?._id)
                     }} action="" className='md:w-96 w-auto flex flex-col mt-2' encType='multipart/form-data'>
                         <div className='w-auto'>
-                            <input type="file" name="userImage" onChange={handleImage}  className='w-full bg-slate-200' id="" />
+                            <input type="file" name="userImage" onChange={handleImage}  className='w-full bg-slate-150 mb-1 rounded-sm' id="" />
                         </div>
                         <div className='w-auto flex flex-col md:flex-row mb-1'>
                             <input type="text" placeholder='First name' className='border w-full border-slate-200 text-md py-1 px-2 rounded-md outline-8 outline-blue-400 md:mr-2 mr-0' name='fName' defaultValue={users?.fName} onChange={handleInput} />
