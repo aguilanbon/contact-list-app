@@ -59,7 +59,7 @@ function ContactsCard({ contact }) {
                         </div>
                     </div>
                     <div className='w-auto flex sm:flex-row flex-col justify-end items-center'>
-                        {contact.createdBy._id === uId ?
+                        {contact.createdBy?._id === uId ?
                             <div className='w-20 flex justify-end'>
                                 <div className='p-2 hover:bg-yellow-50 rounded-full' onClick={() => handleEditModal(contact._id)}>
                                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4 text-yellow-500 cursor-pointer" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
@@ -69,7 +69,7 @@ function ContactsCard({ contact }) {
                             </div>
                             :
                             <div className='py-2 px-2 rounded-full w-20 text-gray-500'>
-                                <p className='text-xs font-bold italic before:content-["fr:"] before:font-light before:mr-1'>{contact.createdBy.fName}</p>
+                                <p className='text-xs font-bold italic before:content-["fr:"] before:font-light before:mr-1'>{contact.createdBy?.fName}</p>
                             </div>
                         }
                         <div className='p-2 hover:bg-red-50 rounded-full' onClick={() => handleDelete(contact._id)}>

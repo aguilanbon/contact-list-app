@@ -116,10 +116,15 @@ function Profile() {
                                         </div>
                                     </div>
                                     <div className='overflow-y-scroll max-h-96'>
-                                        {friends?.map((friend, index) => (
+                                        {friends?.length > 0 ? 
+                                            friends?.map((friend, index) => (
                                             <FriendCard friend={friend} key={index} />
-                                        ))}
-
+                                        ))
+                                        :
+                                        <div className='w-full flex items-center justify-center'>
+                                            <h2 className='my-4 text-sm text-slate-600'>There are no friends to show</h2>
+                                        </div>
+                                        }
                                     </div>
                                 </div>
                             </div>
@@ -138,9 +143,14 @@ function Profile() {
                                         </div>
                                     </div>
                                     <div className='overflow-y-scroll max-h-96'>
-                                        {contacts?.map((contact, index) => (
+                                       {contacts?.length > 0 ?
+                                         contacts.map((contact, index) => (
                                             <ContactsCard key={index} contact={contact} />
-                                        ))}
+                                        )) :
+                                        <div className='w-full flex items-center justify-center'>
+                                            <h2 className='my-4 text-sm text-slate-600'>There are no contacts to show</h2>
+                                        </div>
+                                       }
                                     </div>
                                 </div>
                                 {users?.requests &&
