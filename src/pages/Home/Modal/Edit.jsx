@@ -15,6 +15,8 @@ function Edit() {
     const [currentContactDetails, setCurrentContactDetails] = useState(null)
     const [isLoading, setIsLoading] = useState(false)
 
+    const uid = localStorage.getItem('uId')
+
     const handleEdit = async (id) => {
         setIsLoading(true)
 
@@ -27,7 +29,7 @@ function Edit() {
         formData.append('phone', currentContactDetails.phone)
         formData.append('bday', currentContactDetails.bday)
         formData.append('contactImage', currentContactDetails.contactImage)
-
+        formData.append('uId', uid)
 
         const response = await axios.patch(`http://localhost:4000/api/contacts/${id}`, formData)
         dispatch({ type: 'UPDATE_CONTACT', payload: response.data })
