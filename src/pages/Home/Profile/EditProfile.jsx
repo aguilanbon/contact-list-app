@@ -17,6 +17,8 @@ function EditProfile() {
     const [isLoading, setIsLoading] = useState(false)
     const [currentUser, setCurrentUser] = useState(null)
 
+    const uId = localStorage.getItem('uId')
+
     const handleEdit = async (id) => {
         setIsLoading(true)
 
@@ -29,6 +31,7 @@ function EditProfile() {
         formData.append('bday', currentUser.bday)
         formData.append('email', currentUser.email)
         formData.append('userImage', currentUser.userImage)
+        formData.append('uid', uId)
 
         const response = await axios.patch(`http://localhost:4000/api/users/${id}`, formData)
         dispatch({ type: 'UPDATE_USER', payload: response.data })
