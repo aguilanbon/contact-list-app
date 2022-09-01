@@ -160,7 +160,7 @@ function Profile() {
                                                 <div className='w-auto flex mt-4' key={index}>
                                                     <div className='flex p-2 border border-slate-200 bg-white rounded-md items-center'>
                                                         <div className='flex'>
-                                                            <p className='text-xs'><strong>{rq.fName} {rq.lName}</strong> sent you a friend request</p>
+                                                            <p className='text-xs text-gray-500'><strong className='text-black'>{rq.fName} {rq.lName}</strong> sent you a friend request</p>
                                                         </div>
                                                         <div className='flex text-white ml-2'>
                                                             <button className='text-xs rounded-md bg-green-400 p-1 mr-2 hover:bg-green-500' onClick={() => handleAccept(rq._id)}>Accept</button>
