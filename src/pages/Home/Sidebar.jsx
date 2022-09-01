@@ -1,10 +1,14 @@
 import React from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import toast from 'react-hot-toast'
+import { useContext } from 'react'
+import UserContext from '../../helpers/UserContext'
 
 function Sidebar() {
 
     let navigate = useNavigate('/')
+
+    const {users} = useContext(UserContext)
 
     const handleLogOut = () => {
         localStorage.setItem('uId', '')
@@ -13,6 +17,7 @@ function Sidebar() {
             icon: '👋'
         })
         navigate('/')
+
     }
 
     return (
@@ -27,7 +32,7 @@ function Sidebar() {
                     <p className='ml-4 md:flex hidden'>Home</p>
                 </Link>
                 <Link to='/profile' className='flex p-2 hover:bg-slate-900 rounded-lg'>
-                    <div className='before:content-["1"] before:absolute before:p-1 before:-ml-2 before:-mt-1 before:text-xs before:rounded-full before:bg-red-500 before:h-4 before:w-4 before:flex before:items-center before:justify-center'>
+                    <div before={users?.requests.length} className={`before:content-[attr(before)] before:absolute before:p-1 before:-ml-2 before:-mt-1 before:text-xs before:rounded-full before:bg-red-500 before:h-4 before:w-4 before:flex before:items-center before:justify-center`}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
